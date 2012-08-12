@@ -1,0 +1,1 @@
+<?phpinclude_once("functions.php");include_once( CLASSFOLDER . "/feed.class.php");$thexml = new Feed(0);//feedtype = rss20, rss, atomif (!isset($_GET['rsstype'])) {	$feedtype = "rss20";} else {	$feedtype=$_GET['rsstype'];}if (isset($_GET['postID'])) {	$thexml->setkomentID($_GET['postID']);}$thexml->setfeedtype($feedtype);echo $thexml->display();?>

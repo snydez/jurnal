@@ -81,12 +81,20 @@ $WholeTemplate->Define("_Whole_", "" . TEMPLATEFOLDER . "/" . $theTemplate ."");
 	$thePosts->setSpecificID($paramID);
 //}
 // set current page
+
 $thePosts->setPage($parampage);
 
 if ($paramtag) $thePosts->setTag($paramtag);
 
 $thePosts->displayDraft($editmode);
-if ($paramkategori) $thePosts->setKategori($paramkategori);
+
+if (!$paramkategori) $paramkategori = 'Kat1'; 
+
+
+
+$thePosts->setKategori($paramkategori);
+
+
 
 $theSearchBox = new SearchBoxWidget($intDebug);
 
@@ -158,6 +166,7 @@ $WholeTemplate->Assign("[WidgetAboutMe]", $theMe);
 // TAGSSS
 $theTags = new TagListWidget($intDebug);
 $theTags->setJudul("TagCloud");
+$theTags->setKategori($paramkategori);
 $semuatags = $theTags->retrieveWidget();
 unset($theTags);
 $WholeTemplate->Assign("[WidgetTagList]", $semuatags);
