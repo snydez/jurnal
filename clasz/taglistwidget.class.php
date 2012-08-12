@@ -3,7 +3,9 @@ include_once("widget.class.php");
 
 class TagListWidget extends Widget {
 
-	function TagListWidget($intDebugl=0) {
+	
+
+	function TagListWidget($intDebugl=1) {
 		$this->setDebug($intDebugl);
 		$this->assignTemplate();
 		
@@ -19,16 +21,17 @@ class TagListWidget extends Widget {
 	function retrieveWidget() {
 		$DBt = new Database($this->intDebug);	
 
-		$strSQL = "select IDTag as cat, count(*) as jml from relTag_Jurnal ";
+		$strSQL = "select j.IDKategori, tj.IDTag as tagg, count(*) as jml from relTag_Jurnal tj , tblJurnal j ";
 		
 		$DBt->setstrSQL($strSQL);
 		$DBt->setSort("jml desc");
-		$DBt->setGroup("IDTag");
+		$DBt->setGroup("j.IDKategori, tj.IDTag");
+		$DBt->setFilter("j.IDKategori = '". $this->strKategori   . "'");
 		
 		if ($rs = $DBt->retrieve()) {
 			if ($DBt->getTotalRow()>0) {
 				while ($row = mysql_fetch_assoc($rs)) {
-					$tags[$row['cat']] = $row['jml'];
+					$tags[$row['tagg']] = $row['jml'];
 					
 				} //end while
 				
