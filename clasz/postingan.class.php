@@ -191,7 +191,7 @@ class Postingan {
 		// if maxpostperpage not set, then get it from default option in database
 		if (!$this->maxPostperPage)  		$this->maxPostperPage = getOption("MaxPostperPage");
 				
-		$DB = new Database($this->intDebug);
+		$DB = new Database(1);
 		
 		$strSQL = "select * from tblJurnal j ";
 		if ($this->strTag<>'') {
@@ -200,10 +200,10 @@ class Postingan {
 			
 		}
 	
-		if ($this->strKategori<>'') {
+		//if ($this->strKategori<>'') {
 			$strSQL .= ", tblKategori k ";
 			$this->addFilter("k.IDKategori = j.IDKategori");
-		}
+		//}
 	
 		$DB->setstrSQL($strSQL);
 		
@@ -297,7 +297,10 @@ function generateSinglePost($rowl) {
 
 	$this->strJudulPostingan = strip_tags($rowl['strJudul']);
 	
-	$this->template->Assign("Kategori", $rowl["strKategori"]);
+	$this->template->Assign("Kategori", $rowl["IDKategori"]);
+	$this->strKategori =  $rowl["IDKategori"];
+
+
 	$this->template->Assign("IDp", $rowl["IDJurnal"] );
 	$this->template->Assign("JudulPostingan", $rowl['strJudul']);
 	$this->template->Assign("URIPostingan",  BASEFOLDER . "/id/" . $rowl["IDJurnal"] . "/" . JudulURI($rowl));
@@ -392,7 +395,7 @@ $visitorl = $_COOKIE["visitor"];
 			*/
 			
 			$DBlast = new Database($this->intDebug);
-			$DBlast->setstrSQL("select j.IDJurnal , k.emailKomentator from tblJurnal j left join tblKoment k on j.IDJurnal = k.IDJurnal");
+			$DBlast->setstrSQL("select j.IDJurnal ,  k.emailKomentator from tblJurnal j left join tblKoment k on j.IDJurnal = k.IDJurnal");
 			$DBlast->setFilter("j.IDJurnal = (select max(IDJurnal) from tblJurnal) and k.emailKomentator='" . $visitorl['strE_Mail'] . "'");
 
 			if ($hasillast = $DBlast->retrieve()) {

@@ -296,6 +296,8 @@ class KomentForm extends Koment {
 		$this->template->Assign("[Email]", $strEmail );
 		$this->template->Assign("[URI]", $strURI );
 		$this->template->Assign("[Koment]", $strKoment);
+$this->template->Assign("[IDKategori]", $_SESSION['kat']);
+		
 		
 		if ($generated = $this->template->Parse(_koment_)) {
 			return $generated;
