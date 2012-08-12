@@ -5,7 +5,7 @@ class TagListWidget extends Widget {
 
 	
 
-	function TagListWidget($intDebugl=1) {
+	function TagListWidget($intDebugl) {
 		$this->setDebug($intDebugl);
 		$this->assignTemplate();
 		
@@ -26,9 +26,13 @@ class TagListWidget extends Widget {
 		$DBt->setstrSQL($strSQL);
 		$DBt->setSort("jml desc");
 		$DBt->setGroup("j.IDKategori, tj.IDTag");
-		$DBt->setFilter("j.IDKategori = '". $this->strKategori   . "'");
+		$DBt->setFilter("j.IDKategori = '". $this->strKategori   . "' AND j.IDJurnal = tj.IDJurnal ");
 		
+
+ 
+
 		if ($rs = $DBt->retrieve()) {
+
 			if ($DBt->getTotalRow()>0) {
 				while ($row = mysql_fetch_assoc($rs)) {
 					$tags[$row['tagg']] = $row['jml'];
