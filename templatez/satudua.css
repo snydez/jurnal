@@ -407,9 +407,25 @@ blockquote {
 	margin: 3px;
 }
 
-.blogcategories li
+#blogcategories li
 {
-   float:left;
-   margin-right: 5px;
+   
+   display:inline;
+	
+}
 
+#blogcategories ul {
+	
+
+list-style-type:none;
+border-bottom:4px inset #FFF000;
+
+}
+
+#blogcategories {
+
+padding-bottom:40px;
+
+clear:right;
+display:block;
 }
