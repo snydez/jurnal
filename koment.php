@@ -97,6 +97,7 @@ $theKoment->Assign("CookieNama", $visitor[strNama]);
 $theKoment->Assign("Cookiee-mail", $visitor[strE_Mail]);
 $theKoment->Assign("CookieURI", $visitor[strURL]);
 $theKoment->Assign("BaseFolder", BASEFOLDER);
+$theKoment->Assign("IDKategori", $_SESSION['kat']);
 $theKoment->Assign("Math1", rand(0,5));
 $theKoment->Assign("Math2", rand(0,5));
 
