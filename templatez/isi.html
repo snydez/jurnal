@@ -1,0 +1,71 @@
+<script type="text/javascript" src="{BaseFolder}/templatez/ckeditor/ckeditor.js"></script>
+<!-- removing whizzywig and replacing it with tinyMCE//-->
+<script type="text/javascript">
+window.onload = function()
+	{
+		CKEDITOR.replace( 'deskripsi' );
+
+		CKEDITOR.replace( 'jurnal' );
+	};
+
+</script>
+
+<form action="{BaseFolder}/ngisi.php" method="POST" class="forminput" id="forminput">
+<input type="hidden" name="txthidID" value="{ID}" >
+<label class="rowform"><span class="labelform">Judul</span>: <input type="textbox" name="txtJudul" VALUE="{JUDUL}" width="40" id="txtJudul" /></label>
+<label class="rowform"><span class="labelform">tanggal</span>: <input type="textbox" name="txtTanggal"  VALUE="{TANGGAL}" id="txtTanggal" /> <span>jam</span>: <input type="textbox" name="txtJam" id="txtJam" value="{JAM}" /></label>
+<label class="rowform"><span class="labelform">kategori</span>:   <select name="cboKat">{KATEGORI}
+  </select>
+ </label>
+
+<label class="rowform">
+<span class="labelform">Deskripsi</span>:	
+<div class="container">
+<textarea name="txtDeskripsi" style="vertical-align:text-top" id="deskripsi" cols="100" rows="1" >{DESKRIPSI}</textarea> 
+</div>
+
+</label>
+
+
+	<label class="rowform">
+	<span class="labelform">Isi</span>:	<div class="container" id="zemanta">
+	<textarea name="txtIsi" style="vertical-align:text-top" id="jurnal" cols="140" rows="5" >{ISIPOSTING}</textarea>
+
+</div>
+
+  <label class="rowform"><span class="labelform">Tag</span>: <input type="textbox" name="txtTags" value="{TAGS}" width="30" id="txtTags" /></label>
+	</label>
+
+<div class="tagslist">{TAGSLIST}</div>
+
+  <label class="rowform" id="bolehkoment"><span class="labelform">boleh koment</span>: <input name="chkKoment" type="checkbox" value="1" {BOLEHKOMENT}></label>
+
+<div>
+
+   <input type="Submit" name="btnSubmit" value="Save" accesskey="s" /> <label><input name="chkDraft" type="checkbox" value="1" {DRAFT}> as draft</label> 
+</div>
+
+
+</form>
+
+  
+
+
+<script>
+$(function() {
+    $('a.Tags').click(function() {
+		if ($('#txtTags').attr('value') == '') {
+			theKoma = $('#txtTags').attr('value'); 
+		} else {
+			theKoma = $('#txtTags').attr('value') + ', ';
+		}
+        titleText = theKoma + $(this).attr('title');
+		
+        $('#txtTags').val(titleText);
+		$('#txtTags').css('width', function() {
+			return $(this).width() + 20 + 'px';
+		});
+    });
+});
+</script>
+  

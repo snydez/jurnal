@@ -1,0 +1,15 @@
+.forminput label, .forminput textarea {
+	 display: table-row-group ;	 
+	}
+
+label span {
+	background-color: maroon;
+	color : white;
+	display : table-cell;
+	border-bottom:1px;
+	border-style: ridge;
+	
+	
+	min-width: 200px;
+	
+}

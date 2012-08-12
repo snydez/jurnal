@@ -1,0 +1,18 @@
+
+<div id="isiform">
+<div class="cssbox">  
+<div class="cssbox_head"></div>  
+<div class="cssbox_body">
+	<form action="{BaseFolder}/{FileTarget}" method="POST">
+	<fieldset>
+		<input type="hidden" name="hidID" value="{[ID]}">
+		<div><label class="formfield" for="txtNama">nama : </label>{[Komentator]}</div>
+		<div><label class="formfield" for="txtemail">e-mail : </label>{[Email]}</div>
+		<div><label class="formfield" for="txtURI">URI : </label><input type="text" name="txtURI" value="{[URI]}"/></div>
+		<div><label class="formfield" for="txtKoment">Koment : </label><textarea name="txtKoment" id="txtKoment" size="4">{[Koment]}</textarea></div>
+		<div>&#160;</div>
+	</fieldset>
+	<input type="submit" id="btnSave" name="btnSave" value="Save" key="s"/>
+	</form>	
+</div><!-- end cssbox_body //-->
+</div><!-- end cssbox //-->

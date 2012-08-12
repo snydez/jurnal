@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Manage</title>
+<script src="http://www.google.com/jsapi?key=ABQIAAAATGPRvDjUWSNEPTHJY5R71RT-RL2dpk3v4BKjcjTYjNLTY8p4qxROhf0p1X48AyErcqOCIt7tvldOfw" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load("jquery", "1.4.2");
+  google.load("jqueryui", "1.7.2");
+
+</script>
+
+<!-- <script type="text/javascript" src="{BaseFolder}/templatez/sampleloader.js"></script> //-->
+
+<link href="{BaseFolder}/templatez/manage.css" rel="stylesheet" type="text/css" />
+<link href="{BaseFolder}/templatez/ui.datepicker.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+	$(function() {
+		$('#txtTanggal').datepicker({dateFormat: 'dd-M-yy' });
+	});
+</script>
+</head>
+
+<body>
+<div id="menus"><ul class="menu">{Menu}</ul></div> <!-- end id menus //-->
+
+<div id="isi">
+	{Manage}
+</div> <!-- end id isi //-->
+
+</body>
+</html>

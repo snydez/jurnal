@@ -1,0 +1,198 @@
+
+#isiform {
+	padding:3px;
+	
+	width:500px;	
+	
+	clear:both;
+}
+
+#isiform .formfield {
+	
+	display:block;
+	width:100px;
+	float:left;
+    
+}
+
+
+#isiform .formfield input , #isiform .formfield textarea {
+	
+	border:1px inset gray;
+	/* background-image:url(../templateimg/koment.jpg) ;  */	
+	-moz-border-radius: 5px 5px 5px 5px;
+	color:rgb(255,98,1);
+	float:left;
+}
+
+#isiform .formfield textarea  {
+	width:400px;
+	height:200px;
+	
+}
+
+#alert {
+   font-size: 40pt;
+   color: red;
+
+   z-index:100;
+}
+
+
+#bunchofcomments {
+	padding:6px;
+	
+
+}
+
+#bunchofcomments .koments {
+	float:left;
+}
+
+
+
+
+
+.koments .komentnya {
+	line-height: 1.50em;
+	padding: 8px 6px 2px 6px;
+	
+	
+	
+}
+
+.nama a, .nama a:link {
+	color: rgb(155,47,100);
+}
+
+.nama, .nama a  {
+	font-weight: bold;
+	color: rgb(155,47,100);
+	line-height: 1.75em;
+	background-color: rgb(255,192,2);
+	display: block;	
+	padding-left: 6px;
+	
+	
+}
+
+.pingback .nama, .pingback .nama a {
+	background-color: rgb(187,0,71);
+	color: rgb(255,192,3);
+}
+
+.trackback .nama, .trackback .nama a {
+	background-color: rgb(70,2,187);
+	color: rgb(255,192,3);
+}
+
+
+#bunchofcomments .koments {
+	border-left:1px solid rgb(207,43,50);
+	-moz-border-radius: 5px 5px 5px 5px;
+	
+	padding:10px 20px 10px 20px;
+	/* background-image:url(../templateimg/koment_01.gif);
+	background-position: top left;
+	background-repeat: no-repeat;
+	*/
+	margin: 0px 10px 10px 0px;
+	width:380px;
+	
+	height:100%;
+	overflow:hidden;
+}
+
+#menukomentpage ul {
+	margin-top: 0px;
+	marg//in-left: -50px;
+	border-bottom: 1px solid gray;
+	padding-bottom: 5px;
+}
+
+#menukomentpage  li {
+	display: inline;
+	list-style-type: none;
+	letter-spacing: -0.05em;
+}
+
+#menukomentpage li a {
+	padding: 5px 15px;
+	background-color: #a97;
+	border: 1px inset #030;
+	border-bottom: none;
+	color: rgb(233, 249, 255);
+	text-decoration:none;
+	
+}
+
+
+body {
+ width:1000px;
+ padding:7px;
+ font-family: Helvetica, Geneva, Arial, Sans-Serif;
+
+}
+
+
+#isiform fieldset div {
+
+	
+	padding-bottom: 10px;
+	
+}
+
+#isiform textarea {
+	width: 300px;
+	height: 280px;
+	
+
+}
+
+
+/* set the image to use and establish the lower-right position */ 
+.cssbox, .cssbox_body, .cssbox_head, .cssbox_head h2 
+{ /*  background: transparent url(../templateimg/koment.jpg) no-repeat bottom right;  */}
+
+.cssbox 
+{ width: 455px !important; /* intended total box width - padding-right(next) */ 
+  width: 450px; /* IE Win = width - padding */ 
+  padding-right: 15px; /* the gap on the right edge of the image (not content padding) */ 
+  margin: 1px 1px; /* use to position the box */ } 
+  /* set the top-right image */ 
+  
+ .cssbox_head { 
+   background-position: top right; 
+   margin-right: -15px; /* pull the right image over on top of border */ 
+   padding-right: 40px; /* right-image-gap + right-inside padding */ } 
+   /* set the top-left image */ 
+   
+  .cssbox_head h2 { 
+  background-position: top left; 
+  margin: 0; /* reset main site styles*/ 
+  border: 0; /* ditto */ 
+  padding: 25px 0 15px 40px; /* padding-left = image gap + interior padding ... no padding-right */ 
+  height: auto !important; height: 1%; /* IE Holly Hack */ } 
+  
+  /* set the lower-left corner image */ 
+  .cssbox_body { 
+  background-position: bottom left; 
+  margin-right: 25px; /* interior-padding right */ 
+  padding: 15px 0 15px 40px; /* mirror .cssbox_head right/left */ } 
+
+  fieldset {
+     border:0px;
+  }
+  
+  #previewcomment {
+      width: 500px;
+	  height: 400px;
+	  background-color: red;
+	  display: none;
+  }	  
+  
+  #errorwarning {
+	display:none;
+	color: red;
+	background-color: yellow;
+  }
