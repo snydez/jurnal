@@ -3,16 +3,12 @@
 	author:   sonny dezerial e.mail@snydez.com
 	functionality : to generate postingan, and then put it on the template 
 	create: June 1, 2008
-	modified : Aug 11, 2012
+	modified : Feb 14, 2011
 
 * Feb 14, 2011
  ** add trackback URI
 
-* Apr 22, 2011
- ** fix random, using $_COOKIES instead of $HTTP_GET_COOKIES
-
-* Aug 11, 2012
- ** try to implement the kategori
+ 
 
 */
 
@@ -297,16 +293,11 @@ function generateSinglePost($rowl) {
 
 	$this->strJudulPostingan = strip_tags($rowl['strJudul']);
 	
-	$this->template->Assign("Kategori", $rowl["strKategori"]);
 	$this->template->Assign("IDp", $rowl["IDJurnal"] );
 	$this->template->Assign("JudulPostingan", $rowl['strJudul']);
 	$this->template->Assign("URIPostingan",  BASEFOLDER . "/id/" . $rowl["IDJurnal"] . "/" . JudulURI($rowl));
 	$this->template->Assign("URIEdit" , BASEFOLDER . "/manage.php?IDp=" . $rowl["IDJurnal"] . "&mode=edit&menu=3");
 	
-$fullURIPostingan = "http" . ((!empty($_SERVER['HTTPS'])) ? "s" : "") . "://".$_SERVER['SERVER_NAME'] . "/id/" . $rowl["IDJurnal"] . "/" . JudulURI($rowl); 
-	
-	$this->template->Assign("FullURIPostingan",  $fullURIPostingan);
-
 	$isipostingan = $this->permakpostingan($rowl['strJurnal']);
 	
 	$this->template->Assign("IsiPostingan", $isipostingan);
@@ -537,7 +528,7 @@ function generateTags($IDp) {
 	if ($rs = $DBTags->retrieve()) {
 		
 		while ($row = mysql_fetch_assoc($rs)) {
-			$tmpTags[] = "<a href=\"" . BASEFOLDER . "/kat/" . $this->strKategori  .  "/tag/" .urlencode($row["IDTag"]) . "\" ref=\"tag\" class=\"tagsonpost\"  />" . $row["IDTag"] . "</a>";
+			$tmpTags[] = "<a href=\"" . BASEFOLDER . "/tag/" .urlencode($row["IDTag"]) . "\" ref=\"tag\" class=\"tagsonpost\"  />" . $row["IDTag"] . "</a>";
 		}
 		if (count($tmpTags) > 0) {
 			$strTags = implode(", ", $tmpTags);	
@@ -563,7 +554,7 @@ function generateTags($IDp) {
 function permakpostingan($strPostingan) {
   global $editmode;
   
-  // ---- $strPostingan = smiley($strPostingan);  -- gak pake smiley
+  $strPostingan = smiley($strPostingan);
   
   if (!isset($editmode)) {
   /* kalo bukan admin, sensor! */
