@@ -39,9 +39,9 @@ if (!isset($paramID)) {
 	} elseif ($_GET["btnGo"] == "Go") {
 	// kalo engga, apakah datang dari search di page
 		$paramsearch = $_GET["cari"];
-	} elseif ($HTTP_SESSION_VARS["sescari"]) {
+	} elseif ($_SESSION["sescari"]) {
 	// kalo emang engga juga, apakah tadinya abis nyari?
-		$paramsearch = $HTTP_SESSION_VARS["sescari"];
+		$paramsearch = $_SESSION["sescari"];
 	}
 } else {
 	$paramsearch = "";
@@ -50,14 +50,14 @@ if (!isset($paramID)) {
 if ($_GET["btnClear"] == "clear" ) $paramsearch = "";
 
 
-$HTTP_SESSION_VARS["sescari"] = $paramsearch;
+$_SESSION["sescari"] = $paramsearch;
 
 /* 
-if ($paramsearch) $HTTP_SESSION_VARS["sescari"]= $paramsearch;
-if (!isset($HTTP_SESSION_VARS["sescari"])) {
-	$HTTP_SESSION_VARS["sescari"] = $paramsearch;
+if ($paramsearch) $_SESSION["sescari"]= $paramsearch;
+if (!isset($_SESSION["sescari"])) {
+	$_SESSION["sescari"] = $paramsearch;
 } else {
-	$paramsearch = $HTTP_SESSION_VARS["sescari"];
+	$paramsearch = $_SESSION["sescari"];
 }
 
 */
@@ -108,14 +108,14 @@ if (!$paramID) {
 
 $theSearchBox = new SearchBoxWidget($intDebug);
 
-if ($paramsearch) {
+if ($paramsearch<>"") {
 
 	$thePosts->buildSearchQuery($paramsearch);
 	$theSearchBox->setParamSearch($paramsearch);
 	
 }
 
-$theSearchBox->setTarget("http://" .$_SERVER["HTTP_HOST"]);
+$theSearchBox->setTarget($_SERVER["SERVER_NAME"]);  ''<<<-- ini mesti dibenerin //--->>>>
 $displayingSearchBox = $theSearchBox->retrieveWidget();
 unset($theSearchBox);
 $WholeTemplate->Assign("[WidgetSearchBox]", $displayingSearchBox );

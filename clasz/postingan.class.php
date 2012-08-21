@@ -14,6 +14,9 @@
 * Aug 11, 2012
  ** try to implement the kategori
 
+* aug 22, 2012
+ ** try to fix search formula
+
 */
 
 include_once("database.class.php");
@@ -136,6 +139,9 @@ class Postingan {
 			$keyword = str_replace($petik , "", $keyword);
 				$this->addORFilter("strJudul like '%" . $keyword . "%'");
 				$this->addORFilter("strJurnal like '%" . $keyword . "%'");
+		
+if ($this->intDebug==1) echo "<br/>" . $keyword;
+
 		}
 		
 		$this->addFilter($this->strPostFilterOR);
