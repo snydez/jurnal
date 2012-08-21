@@ -132,7 +132,7 @@ class Postingan {
 		$regg="/\"(.+?)\"|\'(.*?)\'|(\w+)/";
 		
 		preg_match_all($regg,$strKeywords, $theKeywords);
-		//print_r($theKeywords);
+		print_r($theKeywords);
 		
 		foreach($theKeywords[0] as $keyword) {
 			$petik = array("\"","'");
@@ -140,12 +140,12 @@ class Postingan {
 				$this->addORFilter("strJudul like '%" . $keyword . "%'");
 				$this->addORFilter("strJurnal like '%" . $keyword . "%'");
 		
-if ($this->intDebug==1) echo "<br/>" . $keyword;
+
 
 		}
 		
 		$this->addFilter($this->strPostFilterOR);
-		
+
 	}
 	
 	

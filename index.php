@@ -115,7 +115,7 @@ if ($paramsearch<>"") {
 	
 }
 
-$theSearchBox->setTarget($_SERVER["SERVER_NAME"]);  ''<<<-- ini mesti dibenerin //--->>>>
+$theSearchBox->setTarget($_SERVER['PHP_SELF']);  
 $displayingSearchBox = $theSearchBox->retrieveWidget();
 unset($theSearchBox);
 $WholeTemplate->Assign("[WidgetSearchBox]", $displayingSearchBox );
