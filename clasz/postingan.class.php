@@ -191,7 +191,7 @@ class Postingan {
 		// if maxpostperpage not set, then get it from default option in database
 		if (!$this->maxPostperPage)  		$this->maxPostperPage = getOption("MaxPostperPage");
 				
-		$DB = new Database(1);
+		$DB = new Database($this->intDebug);
 		
 		$strSQL = "select * from tblJurnal j ";
 		if ($this->strTag<>'') {
