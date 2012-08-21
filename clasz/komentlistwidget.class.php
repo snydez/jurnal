@@ -17,12 +17,12 @@ class KomentListWidget extends Widget {
 		
 		$DBkw = new Database($this->intDebug);
 		$this->setLimit(7);
-		$strSQL = "select * from tblKoment";
+		$strSQL = "select k.* from tblKoment k, tblJurnal j";
 		
 		$DBkw->setstrSQL($strSQL);
-		$DBkw->setFilter("intType = " . $this->intLinkType . "");
+		$DBkw->setFilter("k.intType = " . $this->intLinkType . " AND  j.IDJurnal = k.IDJurnal  AND j.IDKategori =  '" . $this->strKategori . "'");
 		$DBkw->setLimit(0,$this->getLimit());
-		$DBkw->setSort("IDKoment desc");
+		$DBkw->setSort("k.IDKoment desc");
 		
 		
 				

@@ -19,7 +19,18 @@ $_SESSION["sessionID"] = session_id();
 $paramID = $_GET["IDp"];
 $parampage = $_GET["hal"];
 $paramtag = $_GET["tag"];
-$paramkategori  = $_GET["kat"];
+
+if ($_GET["kat"]) {
+	$paramkategori  = $_GET["kat"];
+	
+} elseif ($_SESSION["kat"]) {
+	$paramkategori = $_SESSION["kat"];	
+} else {
+
+	$paramkategori = 'Kat1';
+
+}
+$_SESSION["kat"] = $paramkategori;
 
 if (!isset($paramID)) {
 	if ($paramsearch = yangdicari($strreferer)) {
@@ -88,12 +99,11 @@ if ($paramtag) $thePosts->setTag($paramtag);
 
 $thePosts->displayDraft($editmode);
 
-if (!$paramkategori) $paramkategori = 'Kat1'; 
-
-
-
-$thePosts->setKategori($paramkategori);
-
+if (!$paramID) {
+	// kalau langsung menuju specific IDjurnal, jangan filter by Kategori.
+	if (!$paramkategori ) $paramkategori = 'Kat1'; 
+	$thePosts->setKategori($paramkategori);
+}
 
 
 $theSearchBox = new SearchBoxWidget($intDebug);
@@ -134,6 +144,7 @@ $WholeTemplate->Assign("[Kategori]", $semuakategori);
 $theLinks = new LinkListWidget($intDebug);
 $theLinks->setJudul("Links");
 $theLinks->setLimit(12);
+$theLinks->setKategori($_SESSION["kat"]);
 $semualinks = $theLinks->retrieveWidget();
 unset($theLinks);
 $WholeTemplate->Assign("[WidgetLinkList]", $semualinks);
@@ -141,6 +152,7 @@ $WholeTemplate->Assign("[WidgetLinkList]", $semualinks);
 // KOMENTSS
 $theKoments = new KomentListWidget($intDebug);
 $theKoments->setJudul("Komentator");
+$theKoments->setKategori($_SESSION["kat"]);
 $semuakoments = $theKoments->retrieveWidget();
 unset($theKoments);
 $WholeTemplate->Assign("[WidgetKomentarList]", $semuakoments);
@@ -148,6 +160,7 @@ $WholeTemplate->Assign("[WidgetKomentarList]", $semuakoments);
 // POSTSSS
 $thePrevPosts = new PostListWidget($intDebug);
 $thePrevPosts->setJudul("Lainnya");
+$thePrevPosts->setKategori($_SESSION["kat"]);
 $thePrevPosts->setSpecificID($paramID);
 $semuaprevposts = $thePrevPosts->retrieveWidget();
 

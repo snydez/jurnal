@@ -15,7 +15,7 @@ class PostListWidget extends Widget {
 	
 	
 	function setQuery() {
-		$this->strSQL = "select IDJurnal, strJudul, strJudulDeskripsi, strJurnal from tblJurnal";
+		$this->strSQL = "select IDJurnal, strJudul, strJudulDeskripsi, strJurnal from tblJurnal j , tblKategori k";
 	}
 	
 	function parsingtemplate($rs) {
@@ -49,7 +49,7 @@ class PostListWidget extends Widget {
 		if (isset($this->IDparaml)) $strFilterl = " and (IDJurnal < " . ($this->IDparaml + $this->getLimit()) . ")";
 		
 		
-		$DBw->setFilter("intType = " . $this->intLinkType . " AND strJudul<>'' AND bolDraft = false " . $strFilterl );
+		$DBw->setFilter("intType = " . $this->intLinkType . " AND strJudul<>'' AND bolDraft = false " . $strFilterl . " AND j.IDKategori = k.IDKategori AND k.IDKategori = '" . $this->strKategori ."'" );
 		$DBw->setLimit(0, $this->getLimit()); //ambil limit yang udah diset. atau yang default
 		$DBw->setSort("IDJurnal desc");
 		

@@ -56,7 +56,7 @@ class Database  {
 			// masukkan parameter jumlah row
 			$this->setTotalRow($this->strSQL . " where 1=1  " . $strxSQLFilter. $strxGroup);
 			
-			$this->strSQL = $this->strSQL . " where 1=1  " . $strxSQLFilter . $strxGroup . $strxSQLOrder . $strxSQLLimit ;
+			$this->strSQL = $this->strSQL . " where 1=1  " . $strxSQLFilter . $strxGroup . $strxSQLOrder . $strxSQLLimit .";" ;
 
 			$xhasil = mysql_query($this->strSQL);
 			if ($xhasil) {
