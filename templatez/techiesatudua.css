@@ -1,0 +1,448 @@
+/* CSS Document */
+
+
+
+body {
+	width: 97.5%;
+	margin: 0px;
+	
+	
+}
+
+blockquote {
+	font-family: sans-serif, Verdana, Arial , Helvetica;
+	background-image: url(tximg/komakoma.jpg);
+	background-position: left top;
+	background-repeat: no-repeat;
+	padding: 13px 0 0 15px;
+	
+
+}
+
+.dotted {
+	background-image: url(tximg/dottedgif.gif);
+	background-repeat: repeat;
+	background-repeat: repeat;
+	position: relative;
+	left: -1em;
+	top: -8px;
+	z-index: 1;
+	height:auto;
+}
+
+.tanggaljam {
+   float:left;
+   margin-right: 0.3em;
+   width: 16%;
+   
+}
+
+
+.tgl {
+	font-family:  "Arial Black";
+	font-size: 3em;
+	font-style: italic; 
+	float: left; 
+	padding-right: 0.3em;
+	padding-right: !important 0.0em  ; 
+	line-height: 0.95em;
+	text-align: right;
+	width: 48%;
+	
+}
+.mon {
+	font-family: Arial;
+	font-size: 1.3em;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+	width: 40%;
+}
+.year {
+	font-family: Arial;
+	font-size: 1.3em;
+	
+	
+}
+
+
+
+.jam  {
+	font-size:x-small;
+	font-family: Arial, Verdana;
+	text-align: center;
+	background-color: #a97;
+	color: white;
+	font-weight: bold;
+	padding: 4px 0;
+	letter-spacing: 0.2em;
+}
+
+
+
+.judul {
+	float: left;
+	/*background-image: url(tximg/garisvertikalsofter.jpg);
+	background-repeat: repeat-y;
+	background-position: left; */
+	width: 80%;
+	clear: right;
+	
+}
+.judul h1 {
+	padding-left: 0.80em;
+	font-family:  Arial;
+	font-size: 2em;
+    line-height: 98%;
+	letter-spacing: -0.07em;
+	margin-top: -2px;
+	margin-top: 0px !important ;
+    text-align: justify;
+
+}
+.xclear {
+	clear: both;
+	float: none;
+}
+
+#kiri {
+	width: 70%;
+	float: left;
+	margin: 10px 40px 10px 15px;
+}
+
+.isipostingan {
+  line-height:140%;
+  margin: 2em 1em 0.5em 2em;
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: justify;
+}
+
+.isipostingan a:link  {
+	color: #aa1;
+}
+
+.isipostingan a:visited  {
+	color: #aa5;
+}
+
+
+.koment {
+	//background-color: black;
+	color:white;
+	font-weight: bold;
+	width: auto;
+	//margin-left: 40px;
+	padding: 3px 7px 3px 3px;
+	float: left;
+
+}
+.koment a:link, .koment a:visited {
+	margin-left: 2em;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 90%;
+	//padding-left: 1.5em;
+	//background-image: url(tximg/bubble.jpg);
+	background-position: 2px 6px;
+	background-repeat: no-repeat;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	color: gray;
+	text-decoration: none;
+	border-right: 1px solid #ababba;
+	padding-right: 10px;
+}
+
+#bataspostingan {
+	height: 180px;
+}
+
+#kanan {
+	width: 22%;
+	float: left;
+	margin: 10px 5px 10px 5px;
+}
+
+#kiri, #kanan {
+	margin-top: 20px;
+}
+
+.mon, #kanan .header , #kanan .header a{
+	color: #a97;
+}
+
+#kanan .header {
+	font-family:  Tahoma, Geneva, sans-serif;
+	font-weight: bold;
+	font-size: 2.5em;
+	letter-spacing: -0.1em;
+	padding-bottom: 1em;
+	
+}
+
+.header  a:link, .header a:hover, .header a:visited, .satupostingan .judul h1 a {
+	text-decoration: none;
+}
+
+#kiri, #kanan , body{
+	/* border: 1px dotted green; sengaja, ini cuma buat ngeliat bates border doang */
+}
+
+#bawah .widget	  {
+	clear: both;
+	display: block;
+	border-top: 10px dotted #a99;
+}
+
+
+
+#bawah .tagcloud ul li {
+	display: inline;
+	//margin-left: -2em;
+}
+
+#bawah .tagcloud ul li a {
+	//margin-right: 1em;
+}
+
+
+#bawah h2 {
+	display: block;
+	width: 90px;
+	height: 100%;
+	
+	float: left;
+}
+
+#bawah .isiwidget { 
+	float:left;
+	height: 100%;
+	width: 90%;
+}
+
+.satupostingan .judul h1 a {
+	color: #131;
+}
+
+
+.widget h2 {
+	font-family : "Trebuchet MS", "Century Gothic", calisto, verdana, sans-serif;
+	font-size: 1.2em;
+}
+
+/* ini css buat admin page koq disini?
+*/
+
+.topwidget .isiwidget ul {
+	margin-left: -50px;
+	
+}
+
+.topwidget .isiwidget  li {
+	display: inline;
+	list-style-type: none;
+	letter-spacing: -0.05em;	
+	
+	
+}
+
+.topwidget .isiwidget li a {
+	padding: 5px 15px;
+	background-color: rgb(206, 44, 50);
+	border: 1px inset #030;
+	border-bottom: none;
+	color: rgb(255, 149, 3);
+	text-decoration:none;
+}
+
+
+/* ini css buat admin page koq disini? ^^^^^
+*/
+
+#kanan .widget li {
+	list-style: none;
+	list-style-position: outside;
+	margin-left: -2em;
+	
+}
+
+/* this things is worked, but not for padding-left minus
+#kanan .widget li:first-line {
+
+	font-family: Geneva, sans-serif ;
+}
+*/
+
+#kanan .widget li  {
+
+	padding: 0.25em 0.5em 0.35em 0.75em;
+	border-left: 1px dotted  #aa1; /*  #c8a; */
+	font-family: Helvetica, Geneva, Arial, Sans-Serif;
+
+	
+	
+	
+}
+
+.widget li a:link, .widget li a:visited  {
+	color : #aa1; /* #776; */
+	text-decoration : none;
+	font-family: Verdana,  Geneva , Sans-Serif;
+	padding-left: 1.1em;
+	margin-left: -1em;
+
+}
+
+#kanan .widget li a:hover {
+	
+	background-image: url(tximg/linkshout.jpg);
+	background-position: left bottom; 
+	background-repeat: no-repeat;
+	
+}
+
+#paging {
+	height: 55px;
+	/* text-indent: -9999px; */
+	text-align: center;
+}
+
+#paging a {
+	// display: block;
+	// float: left;
+	// height: 55px;
+	// width: 55px;
+	margin: 0px 2px;
+	padding: 2px 8px;
+	text-decoration: none;
+	font-family: verdana, "arial narrow", arial;
+	// font-style: italic;
+	font-weight: bold;
+	color:  #aa1;
+	
+}
+
+
+
+#paging a.first:hover {
+	background: url(tximg/firstx.png) left top no-repeat;
+	padding: 18px 8px 2px 8px;
+}
+
+#paging a.last:hover {
+	background: url(tximg/lastx.png) right top no-repeat;
+	padding: 18px 8px 2px 8px;
+}
+
+#paging a.prev:hover {
+	background: url(tximg/prevx.png) top no-repeat;
+	padding: 18px 8px 2px 8px;
+}
+
+#paging a.next:hover {
+	background: url(tximg/nextx.png) top no-repeat;
+	padding: 18px 8px 2px 8px;
+}
+
+
+
+
+#kiri .topwidget {
+	display: none;
+}
+
+.author , .author a:link , .author a:visited 	 {
+	font-family: Arial, Verdana;
+	text-align: center;
+	font-size: smaller;
+	// border-bottom: 1px dotted rgb(10,100,10);
+	//width: 200px;
+	// float: right;
+	color: gray;
+	text-decoration: none;
+	font-style: italic;
+}
+
+.tags {
+	
+	/* display:  inline; */
+	padding-top: 13px;
+	padding-bottom: 7px;
+	padding-left: 7px;
+	border-left: 1px solid gray;
+	margin-left: 30px;
+
+}
+
+.tags a:link, .tags a:visited {
+	font-family: Arial, Verdana;
+	color: rgb(100,100,90);
+	font-size: small;
+	text-decoration: none;
+	
+}
+
+.tags a:hover {
+	color: red;
+}
+
+.plusone {
+	float: left;
+	display: inline;
+	margin-left:7px;
+}
+
+
+.imgpostkiri {
+	float: left;
+	
+
+}
+
+.imgpostkanan {
+	float: right;
+}
+
+.imgpostkiri, .imgpostkanan {
+	margin: 3px;
+}
+
+#blogcategories li
+{
+   
+   display:inline;
+	
+}
+
+#blogcategories ul {
+	
+margin:0;
+padding:0;
+padding-top:6px;
+padding-bottom:6px;
+list-style-type:none;
+
+background-color:#98bf21;
+}
+
+#blogcategories A:link,A:visited {
+	text-align:center;
+	padding:6px;
+	text-decoration: none;
+	text-transform: uppercase;
+color:#FFFFFF;
+}
+
+#blogcategories a:hover,a:active
+{
+background-color:#7A991A;
+}
+
+#blogcategories {
+
+padding-bottom:40px;
+
+color:#FFFFFF;
+clear:right;
+display:block;
+}
