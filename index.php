@@ -8,6 +8,7 @@ include_once( CLASSFOLDER . "/aboutmewidget.class.php");
 include_once( CLASSFOLDER . "/postlistwidget.class.php");
 include_once( CLASSFOLDER . "/taglistwidget.class.php");
 include_once( CLASSFOLDER . "/kategorilistwidget.class.php");
+include_once( CLASSFOLDER . "/adsensewidget.class.php");
 include_once( CLASSFOLDER . "/searchboxwidget.class.php");
 
 $intDebug = 0;
@@ -77,10 +78,12 @@ if(preg_match('/android|avantgo|blackberry|blazer|compal|elaine|fennec|hiptop|ie
 if ($mobiletemplate) {
 	$theTemplate = getOption("mobiletemplate");
 } else {
-	$theTemplate = getOption("indextemplate");
+	$theTemplate = getOption( $paramkategori . "template");
 }
 
-$WholeTemplate = new SimpleTemplate() ;
+
+
+$WholeTemplate = new SimpleTemplate(1) ;
 $WholeTemplate->Define("_Whole_", "" . TEMPLATEFOLDER . "/" . $theTemplate ."");
 
 // Origingally --- $thePosts = new Postingan($intDebug);
@@ -174,6 +177,14 @@ $theLinksAboutMe = new AboutMeWidget($intDebug);
 $theMe = $theLinksAboutMe->retrieveWidget();
 unset($theLinksAboutMe);
 $WholeTemplate->Assign("[WidgetAboutMe]", $theMe);
+
+
+//  ADSENSE
+
+$theAdsense = new AdsenseWidget($intDebug);
+$theIklan = $theAdsense->retrieveWidget();
+unset($theAdsense);
+$WholeTemplate->Assign("[WidgetAdsense]", $theIklan);
 
 
 // TAGSSS
