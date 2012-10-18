@@ -51,10 +51,15 @@ while ($rowkoment = mysql_fetch_assoc($rowkoments)) {
 
 	$theKoment->Assign("IDKoment", $rowkoment["IDKoment"]);
 	$strNamadanURI = $rowkoment["strKomentator"];
+	$gravatarHash = md5(strtolower(trim($rowkoments["emailKomentator"])));
+
+	$strGravatar = "<img src=\"http://www.gravatar.com/avatar/" . $gravatarHash . "?d=blank\" >";
 	if ($lURI=$rowkoment["URIKomentator"]) {
 		$strNamadanURI = "<a href=\"" . $lURI . "\" target=\"_blank\">" . $rowkoment["strKomentator"]  . "</a>";
+		
 	}	
 	
+
 	switch ($rowkoment["intType"]) {
 		case 2:
 			$z=' pingback';
@@ -72,6 +77,7 @@ while ($rowkoment = mysql_fetch_assoc($rowkoments)) {
 	$strJudulURI = JudulURI($rowkoment);
 
 	$theKoment->Assign("Nama", $strNamadanURI);
+	$theKoment->Assign("Gravatar", $strGravatar);
 	$theKoment->Assign("Koment", $strKoment);
 	$theKoment->Assign("z", $z); // gradation background color;
 
