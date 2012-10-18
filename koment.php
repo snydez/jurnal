@@ -51,7 +51,7 @@ while ($rowkoment = mysql_fetch_assoc($rowkoments)) {
 
 	$theKoment->Assign("IDKoment", $rowkoment["IDKoment"]);
 	$strNamadanURI = $rowkoment["strKomentator"];
-	$gravatarHash = md5(strtolower(trim($rowkoments["emailKomentator"])));
+	$gravatarHash = md5(strtolower(trim($rowkoment["emailKomentator"])));
 
 	$strGravatar = "<img src=\"http://www.gravatar.com/avatar/" . $gravatarHash . "?d=blank\" >";
 	if ($lURI=$rowkoment["URIKomentator"]) {
@@ -79,6 +79,7 @@ while ($rowkoment = mysql_fetch_assoc($rowkoments)) {
 	$theKoment->Assign("Nama", $strNamadanURI);
 	$theKoment->Assign("Gravatar", $strGravatar);
 	$theKoment->Assign("Koment", $strKoment);
+	$theKoment->Assign("email", $rowkoment["emailKomentator"] );
 	$theKoment->Assign("z", $z); // gradation background color;
 
 	/* $theKoment->Assign("URI", $rowkoment["URIkomentator"]); */
