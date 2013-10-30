@@ -21,6 +21,7 @@ $paramID = $_GET["IDp"];
 $parampage = $_GET["hal"];
 $paramtag = $_GET["tag"];
 
+
 if ($_GET["kat"]) {
 	$paramkategori  = $_GET["kat"];
 	
@@ -29,8 +30,8 @@ if ($_GET["kat"]) {
 } else {
 
 	$paramkategori = 'Kat1';
-
 }
+
 $_SESSION["kat"] = $paramkategori;
 
 if (!isset($paramID)) {
@@ -40,6 +41,7 @@ if (!isset($paramID)) {
 	} elseif ($_GET["btnGo"] == "Go") {
 	// kalo engga, apakah datang dari search di page
 		$paramsearch = $_GET["cari"];
+		$parampage = 1; //reset kembali jadi halaman 1, kalau button go di click.
 	} elseif ($_SESSION["sescari"]) {
 	// kalo emang engga juga, apakah tadinya abis nyari?
 		$paramsearch = $_SESSION["sescari"];
@@ -102,7 +104,7 @@ if ($paramtag) $thePosts->setTag($paramtag);
 
 $thePosts->displayDraft($editmode);
 
-if (!$paramID) {
+if (!$paramID && !$paramsearch) {
 	// kalau langsung menuju specific IDjurnal, jangan filter by Kategori.
 	if (!$paramkategori ) $paramkategori = 'Kat1'; 
 	$thePosts->setKategori($paramkategori);
@@ -112,7 +114,7 @@ if (!$paramID) {
 $theSearchBox = new SearchBoxWidget($intDebug);
 
 if ($paramsearch<>"") {
-
+	
 	$thePosts->buildSearchQuery($paramsearch);
 	$theSearchBox->setParamSearch($paramsearch);
 	

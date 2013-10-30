@@ -132,7 +132,7 @@ class Postingan {
 		$regg="/\"(.+?)\"|\'(.*?)\'|(\w+)/";
 		
 		preg_match_all($regg,$strKeywords, $theKeywords);
-		print_r($theKeywords);
+		
 		
 		foreach($theKeywords[0] as $keyword) {
 			$petik = array("\"","'");
