@@ -22,6 +22,7 @@
 include_once("database.class.php");
 include_once("template.class.php");
 include_once("errors.class.php");
+include_once("twittercard.class.php");
 
 class Postingan {
 	var $errP;
@@ -41,6 +42,8 @@ class Postingan {
 	var $rownumber;
 	var $strSearchCriteria;
 	var $strPostFilterOR;
+	var $twitterCard;
+	var $tmpTwitterCard;
 	
 	function Postingan($intDebugl=0){
 		
@@ -281,7 +284,11 @@ class Postingan {
 		return $isi;		
 		
 	} //end function readPosts
-	
+
+	function loadTwitterCard() {
+		return $this->tmpTwitterCard;
+
+	}
 	
 
 function generateSinglePost($rowl) {
@@ -354,7 +361,18 @@ $fullURIPostingan = "http" . ((!empty($_SERVER['HTTPS'])) ? "s" : "") . "://".$_
 	}
 	
 	$tmpContent = $this->template->Parse("_postingan_");
+
+	$twitterCard = new TwitterCard($debugl);
+	$twitterCard->assignTemplate();
+	$twitterCard->setCard("TitleTC",$rowl['strJudul']);
+	$twitterCard->setCard("DescriptionTC","blabalbalbalb<p>blalablaba");
+	$twitterCard->setCard("ImageTC",$imginjurnal[2]);
+	$twitterCard->setCard("PermalinkTC",$fullURIPostingan);
 	
+	$this->tmpTwitterCard = $twitterCard->loadCard();
+
+	
+
 	unset($DBkoments);
 	return $tmpContent;
 
