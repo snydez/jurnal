@@ -85,7 +85,7 @@ if ($mobiletemplate) {
 
 
 
-$WholeTemplate = new SimpleTemplate(1) ;
+$WholeTemplate = new SimpleTemplate(0) ;
 $WholeTemplate->Define("_Whole_", "" . TEMPLATEFOLDER . "/" . $theTemplate ."");
 
 // Origingally --- $thePosts = new Postingan($intDebug);
@@ -130,12 +130,12 @@ $semuapostingan = $thePosts->readPosts();
 
 $strJudulPostingan = $thePosts->getJudulPostingan();
 $halNavigasi = $thePosts->generateNavigasi();
-
+$tmpTwitterCard = $thePosts->loadTwitterCard();
 
 unset($thePosts);
 //masukkan isipostingan ke Template
 $WholeTemplate->Assign("[Postingan]", $semuapostingan);
-$whoteTemplate->Assign("[TwitterCard]", $thePosts->loadTwitterCard());
+$whoteTemplate->Assign("[TwitterCard]", $tmpTwitterCard);
 
 
 
