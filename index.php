@@ -11,7 +11,7 @@ include_once( CLASSFOLDER . "/kategorilistwidget.class.php");
 include_once( CLASSFOLDER . "/adsensewidget.class.php");
 include_once( CLASSFOLDER . "/searchboxwidget.class.php");
 
-$intDebug = 0;
+$intDebug = 1;
 //baca session, apakah admin
 $editmode = $_SESSION["sesadmin"];
 $_SESSION["sessionID"] = session_id(); 
@@ -135,6 +135,10 @@ $halNavigasi = $thePosts->generateNavigasi();
 unset($thePosts);
 //masukkan isipostingan ke Template
 $WholeTemplate->Assign("[Postingan]", $semuapostingan);
+$whoteTemplate->Assign("[TwitterCard]", $thePosts->loadTwitterCard());
+
+
+
 
 
 
@@ -202,7 +206,6 @@ $WholeTemplate->Assign("[WidgetTagList]", $semuatags);
 //TAMPILKAN!!!!
 $headertitle = getOption("blogTitle");
 if (isset($paramID)) {
-	$headertitle .= " ~ " . $strJudulPostingan;
 	$rsskoment = "<link rel=\"alternate\" type=\"application/rss+xml\" href=\"". BASEFOLDER . "/feed/koment/" . $paramID ."/rss20\" title=\"" . $strJudulPostingan . "\" />";
 } else {
 	$rsskoment = "";
