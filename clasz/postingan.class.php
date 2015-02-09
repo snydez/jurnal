@@ -285,11 +285,15 @@ class Postingan {
 		
 	} //end function readPosts
 
+	
+
 	function loadTwitterCard() {
+
 		return $this->tmpTwitterCard;
 
 	}
-	
+
+ 	
 
 function generateSinglePost($rowl) {
 /* funtion to generate each post based on $row
@@ -331,7 +335,7 @@ $fullURIPostingan = "http" . ((!empty($_SERVER['HTTPS'])) ? "s" : "") . "://".$_
 	preg_match('<img(.*)?src=\"([^\"]+)>',$isipostingan,$imginjurnal);
 	$this->template->Assign("ImgInPost", $imginjurnal[2]);
 	
-	unset($isipostingan);
+	
 	
 	$this->template->Assign("TglPostingan", $postdate[mday]);
 	$this->template->Assign("BulanPostingan", substr($postdate[month],0,3));
@@ -362,16 +366,17 @@ $fullURIPostingan = "http" . ((!empty($_SERVER['HTTPS'])) ? "s" : "") . "://".$_
 	
 	$tmpContent = $this->template->Parse("_postingan_");
 
-	$twitterCard = new TwitterCard($debugl);
+	$twitterCard = new TwitterCard();
 	$twitterCard->assignTemplate();
+
 	$twitterCard->setCard("TitleTC",$rowl['strJudul']);
-	$twitterCard->setCard("DescriptionTC","blabalbalbalb<p>blalablaba");
+	$twitterCard->setCard("DescriptionTC",substr(strip_tags(sensor($isipostingan)),0,195) . "..");
 	$twitterCard->setCard("ImageTC",$imginjurnal[2]);
 	$twitterCard->setCard("PermalinkTC",$fullURIPostingan);
 	
 	$this->tmpTwitterCard = $twitterCard->loadCard();
 
-	
+	unset($isipostingan);
 
 	unset($DBkoments);
 	return $tmpContent;
@@ -587,22 +592,22 @@ function generateTags($IDp) {
 }
 
 
-function permakpostingan($strPostingan) {
-  global $editmode;
+	function permakpostingan($strPostingan) {
+  	global $editmode;
   
   // ---- $strPostingan = smiley($strPostingan);  -- gak pake smiley
   
-  if (!isset($editmode)) {
+  		if (!isset($editmode)) {
   /* kalo bukan admin, sensor! */
-	$strPostingan = sensor($strPostingan);
-  }
+		$strPostingan = sensor($strPostingan);
+  		}
   
-  return $strPostingan;
-}
+  		return $strPostingan;
+	}
 
-function getJudulPostingan() {
-	return $this->strJudulPostingan;
-}
+	function getJudulPostingan() {
+		return $this->strJudulPostingan;
+	}
 
 } // end class
 
