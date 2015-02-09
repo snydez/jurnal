@@ -9,10 +9,11 @@ class TwitterCard {
 	var $DescriptionTC;
 	var $ImageTC;
 	var $PermalinkTC;
+	var $template;
+	
 
-	function TwitterCard($intDebugl=0){
+	function TwitterCard($intDebugl){
 
-		$this->setDebug($intDebugl);
  	    
 	}
 
@@ -21,8 +22,11 @@ class TwitterCard {
 	}
 
 	function assignTemplate() {
+
+
+	
 		// kalo belom set templatename nya, ambil dari default option database;
-		if (!$this->strTemplateName) $this->strTemplateName = "twittercard.html"
+		if (!$this->strTemplateName) $this->strTemplateName = "twittercard.html";
 				
 		$this->template = new SimpleTemplate;
 		
@@ -31,13 +35,16 @@ class TwitterCard {
 			return false;
 			
 		} //end if
+
 	} 
 
 	function setCard($cardname,$cardvalue) {
+			
 		$this->template->Assign($cardname, $cardvalue); 
 	}
 
 	function loadCard(){
+		
 		return $this->template->Parse("_twittercard_");
 	}
 
