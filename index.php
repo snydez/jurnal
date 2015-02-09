@@ -11,7 +11,7 @@ include_once( CLASSFOLDER . "/kategorilistwidget.class.php");
 include_once( CLASSFOLDER . "/adsensewidget.class.php");
 include_once( CLASSFOLDER . "/searchboxwidget.class.php");
 
-$intDebug = 1;
+$intDebug = 0;
 //baca session, apakah admin
 $editmode = $_SESSION["sesadmin"];
 $_SESSION["sessionID"] = session_id(); 
@@ -130,13 +130,17 @@ $semuapostingan = $thePosts->readPosts();
 
 $strJudulPostingan = $thePosts->getJudulPostingan();
 $halNavigasi = $thePosts->generateNavigasi();
+
+
 $tmpTwitterCard = $thePosts->loadTwitterCard();
 
 unset($thePosts);
 //masukkan isipostingan ke Template
 $WholeTemplate->Assign("[Postingan]", $semuapostingan);
-$whoteTemplate->Assign("[TwitterCard]", $tmpTwitterCard);
 
+
+
+$WholeTemplate->Assign("[TwitterCard]", $tmpTwitterCard);
 
 
 
