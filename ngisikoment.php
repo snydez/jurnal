@@ -17,7 +17,7 @@ $checkcanKoment = new Database();
 
 $checkcanKoment->setDebug($intDebug);
 
-$strSQLcheck = "select bolhasKoment from tblJurnal ";
+$strSQLcheck = "select strJudul, bolhasKoment from tblJurnal ";
 
 $checkcanKoment->setstrSQL($strSQLcheck);
 $checkcanKoment->setFilter("IDJurnal = " . $IDJurnal . " and bolhasKoment = 1");
@@ -69,7 +69,7 @@ if ($rowcheck = mysql_fetch_array($rowchecks) AND $allow ) {
 				echo $addkoment->getError($debug);
 		
 			} else {
-				kirimemail($emailKomentator, $strKomentator);
+				kirimemail($emailKomentator, $strKoment, $strKomentator . " for " . $IDJurnal . " - " . $rowcheck["strJudul"] );
 				header("Location: " . BASEFOLDER . "/komen/" . $IDJurnal);
 			}
 		} else {

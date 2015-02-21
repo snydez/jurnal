@@ -319,17 +319,17 @@ function replacechar($txtContent) {
 
 }
 
-function kirimemail($to, $msg) {
+function kirimemail($to, $msg, $from) {
 
     ini_set("SMTP", "mail.snydez.com:26");
     ini_set("sendmail_from", "daftar@snydez.com");
 
-    $message = $msg . ":\r\nSMTP = mail.snydez.com\r\nsmtp_port = 26\r\nsendmail_from = daftar@snydez.com";
+    $message = $msg . "\n";
 
-    $headers = "From: daftar@snydez.com.com";
+    $headers = "From: daftar@snydez.com";
 
 
-    mail($to, "koment", $message, $headers);
+    mail($to, "koment from ". $from, $message, $headers);
 
 
 }
