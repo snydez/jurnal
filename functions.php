@@ -313,9 +313,24 @@ function curPageURL() {
 	 return $pageURL;
 }
 
-function setchar($txtContent) {
+function replacechar($txtContent) {
+echo "adsad";
+	return str_replace("'","----",$txtContent);
 
-	return str_replace("'"."&#39;",$txtContent);
+}
+
+function kirimemail($to, $msg) {
+
+    ini_set("SMTP", "mail.snydez.com:26");
+    ini_set("sendmail_from", "daftar@snydez.com");
+
+    $message = $msg . ":\r\nSMTP = mail.snydez.com\r\nsmtp_port = 26\r\nsendmail_from = daftar@snydez.com";
+
+    $headers = "From: daftar@snydez.com.com";
+
+
+    mail($to, "koment", "anu");
+
 
 }
 

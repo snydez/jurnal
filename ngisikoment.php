@@ -57,7 +57,7 @@ if ($rowcheck = mysql_fetch_array($rowchecks) AND $allow ) {
 		if ($strKomentator && $strKoment) {
 
 			$strSQL = "insert into tblKoment (strKomentator, dtmTanggal, strKoment, emailKomentator, IDJurnal, intType, URIKomentator, strAdditionalDescr)";
-			$strSQL .= " values ('" . $strKomentator . "',now(),'" . $strKoment . "','" . $emailKomentator . "'," . $IDJurnal . ",0,'" . $URIKomentator . "',". "'" .  $_SERVER['HTTP_REFERER']  . " | IP : " . $_SERVER['REMOTE_ADDR'] . "')";
+			$strSQL .= " values ('" . $strKomentator . "',now(),'" . replacechar($strKoment) . "','" . $emailKomentator . "'," . $IDJurnal . ",0,'" . $URIKomentator . "',". "'" .  $_SERVER['HTTP_REFERER']  . " | IP : " . $_SERVER['REMOTE_ADDR'] . "')";
 
 			/** set cookie */
 			setcookie("visitor[strNama]", $strKomentator, time() + (3600 * 24 * 30));
@@ -69,6 +69,7 @@ if ($rowcheck = mysql_fetch_array($rowchecks) AND $allow ) {
 				echo $addkoment->getError($debug);
 		
 			} else {
+				kirimemail($emailKomentator, $strKomentator);
 				header("Location: " . BASEFOLDER . "/komen/" . $IDJurnal);
 			}
 		} else {

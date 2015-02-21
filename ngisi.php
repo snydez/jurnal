@@ -3,6 +3,7 @@ include_once("functions.php");
 include_once(CLASSFOLDER ."/database.class.php");
 include_once("pingbackclient.php");
 
+echo "sdfsdfsdfsdf";
 if ($_POST["txtTanggal"]!="") {
 	$postdate = getdate(strtotime($_POST["txtTanggal"]));
 	
@@ -18,11 +19,14 @@ if ($_POST["txtTanggal"]!="") {
 	$txtTanggal = "now()";
 //echo "post now";
 }
-
+echo "sdsdfdsf";
 $txtIDp = $_POST["txthidID"];
 $txtJudul = $_POST["txtJudul"];
-$txtIsi = $_POST["txtIsi"];
-$txtDeskripsi = $_POST["txtDeskripsi"];
+$txtIsi = replacechar($_POST["txtIsi"]);
+$txtDeskripsi = replacechar($_POST["txtDeskripsi"]);
+
+echo "xx";
+
 $chkKoment = $_POST["chkKoment"];
 $chkDraft = $_POST["chkDraft"];
 $txtIDKategori = $_POST["cboKat"];
@@ -33,7 +37,7 @@ if(!isset($chkDraft)) $chkDraft = 0;
 if(!isset($chkKoment)) $chkKoment = 0;
 
 
-$intDebug = 0;
+$intDebug = 1;
 
 $ngisi = new Database($intDebug);
 
@@ -48,8 +52,8 @@ if (!$txtIDp) {
 	$strSQL .= " dtmTanggal = " . $txtTanggal . ", ";
 	$strSQL .= " dtmModify = now(), ";
 	$strSQL .= " strJudul = '" . $txtJudul . "', ";
-	$strSQL .= " strJurnal = '" . setchar($txtIsi) . "', ";
-	$strSQL .= " strDeskripsi = '" . setchar($txtDeskripsi) . "', ";
+	$strSQL .= " strJurnal = '" . $txtIsi . "', ";
+	$strSQL .= " strDeskripsi = '" . $txtDeskripsi . "', ";
 	$strSQL .= " bolhasKoment = " . $chkKoment . ", ";
 	$strSQL .= " bolDraft = " . $chkDraft . ", ";
 	$strSQL .= " IDKategori = '" . $txtIDKategori . "' ";
@@ -112,7 +116,7 @@ if (!$chkDraft) $sp = send_pingback(stripslashes($txtIsi),  $hyperlink);
 
 function tagging($txtTags_, $txtID_) {
 
-	$intDebug = 1;
+	$intDebug = 0;
 
 	
 	$strSQLtagdel = "delete from relTag_Jurnal where IDJurnal = " . $txtID_ . "";

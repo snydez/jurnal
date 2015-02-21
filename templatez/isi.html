@@ -1,14 +1,27 @@
-<script type="text/javascript" src="{BaseFolder}/templatez/ckeditor/ckeditor.js"></script>
+<!-- <script type="text/javascript" src="{BaseFolder}/templatez/ckeditor/ckeditor.js"></script>  //-->
 <!-- removing whizzywig and replacing it with tinyMCE//-->
+<script src="http://tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 <script type="text/javascript">
-window.onload = function()
-	{
-		CKEDITOR.replace( 'deskripsi' );
+//window.onload = function()
+//	{
+//		CKEDITOR.replace( 'deskripsi' );
+//
+//		CKEDITOR.replace( 'jurnal' );
+//	};
 
-		CKEDITOR.replace( 'jurnal' );
-	};
 
-</script>
+tinymce.init({
+    selector: "textarea",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste"
+    ],
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+	encoding : "xml"
+});
+
+</script>	
 
 <form action="{BaseFolder}/ngisi.php" method="POST" class="forminput" id="forminput">
 <input type="hidden" name="txthidID" value="{ID}" >
