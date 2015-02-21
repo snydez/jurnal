@@ -314,8 +314,8 @@ function curPageURL() {
 }
 
 function replacechar($txtContent) {
-echo "adsad";
-	return str_replace("'","----",$txtContent);
+
+	return str_replace("'","\'",$txtContent);
 
 }
 
@@ -329,7 +329,7 @@ function kirimemail($to, $msg) {
     $headers = "From: daftar@snydez.com.com";
 
 
-    mail($to, "koment", "anu");
+    mail($to, "koment", $message, $headers);
 
 
 }
