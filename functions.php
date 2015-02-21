@@ -313,5 +313,10 @@ function curPageURL() {
 	 return $pageURL;
 }
 
+function setchar($txtContent) {
+
+	return str_replace("'"."&#39;",$txtContent);
+
+}
 
 ?>

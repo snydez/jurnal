@@ -48,8 +48,8 @@ if (!$txtIDp) {
 	$strSQL .= " dtmTanggal = " . $txtTanggal . ", ";
 	$strSQL .= " dtmModify = now(), ";
 	$strSQL .= " strJudul = '" . $txtJudul . "', ";
-	$strSQL .= " strJurnal = '" . $txtIsi . "', ";
-	$strSQL .= " strDeskripsi = '" . $txtDeskripsi . "', ";
+	$strSQL .= " strJurnal = '" . setchar($txtIsi) . "', ";
+	$strSQL .= " strDeskripsi = '" . setchar($txtDeskripsi) . "', ";
 	$strSQL .= " bolhasKoment = " . $chkKoment . ", ";
 	$strSQL .= " bolDraft = " . $chkDraft . ", ";
 	$strSQL .= " IDKategori = '" . $txtIDKategori . "' ";
