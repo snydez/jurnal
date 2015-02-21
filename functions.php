@@ -326,7 +326,7 @@ function kirimemail($to, $msg, $from) {
 
     $message = $msg . "\n";
 
-    $headers = "From: daftar@snydez.com";
+    $headers = "From: koment <daftar@snydez.com>";
 
 
     mail($to, "koment from ". $from, $message, $headers);
