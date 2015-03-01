@@ -209,7 +209,9 @@ $WholeTemplate->Assign("[WidgetTagList]", $semuatags);
 
 //TAMPILKAN!!!!
 $headertitle = getOption("blogTitle");
+
 if (isset($paramID)) {
+	$headertitle .= " ~ " . $strJudulPostingan;
 	$rsskoment = "<link rel=\"alternate\" type=\"application/rss+xml\" href=\"". BASEFOLDER . "/feed/koment/" . $paramID ."/rss20\" title=\"" . $strJudulPostingan . "\" />";
 } else {
 	$rsskoment = "";
