@@ -2,21 +2,28 @@
 	<div class="satupostingan">
 	<div id="kepala">
 		<div class="tanggaljam">
+<meta itemprop="datePublished" content="{TahunPostingan}-{BulanPostingan}-{TglPostingan}T{JamPostingan}">
 			<div class="tgl">{TglPostingan}</div>
 			<div class="mon">{BulanPostingan}</div>
 			<div class="year">{TahunPostingan}</div>
 			<div class="jam">{JamPostingan}</div>
 			<div class="author">
-					<A rel="author" href="http://snydez.com" />snydez</a></div>
+					<A rel="author" href="http://snydez.com" />
+						<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+						<span itemprop="nickname"> 						
+					snydez
+						</span>
+						</span>	
+					</a></div>
 				
 		</div> <!-- end tanggaljam //-->
 		
-		<div class="judul"><h1><a href="{URIPostingan}">{JudulPostingan}</a></h1></div>
+		<div class="judul"><h1><a itemprop="url" href="{URIPostingan}">{JudulPostingan}</a></h1></div>
 	</div> <!-- end id kepala //-->
 	<div class="xclear"></div>
 	
 	{Author}
-	<div class="isipostingan">
+	<div itemprop="articleSection" itemprop="articleBody" class="isipostingan">
 		{IsiPostingan}
 	</div> <!-- end isipostingan //-->
 	<div class="xclear"></div>

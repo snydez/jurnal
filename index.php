@@ -217,6 +217,8 @@ if (isset($paramID)) {
 	$rsskoment = "";
 }
 
+
+
 $WholeTemplate->Assign("[BlogTitle]", $headertitle);
 $WholeTemplate->Assign("[Halaman]", $halNavigasi);
 $WholeTemplate->Assign("[BaseFolder]", BASEFOLDER );
