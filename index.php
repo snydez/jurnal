@@ -51,7 +51,7 @@ if (!isset($paramID)) {
 }
 
 if ($_GET["btnClear"] == "clear" ) $paramsearch = "";
-
+ 	
 
 $_SESSION["sescari"] = $paramsearch;
 
@@ -133,6 +133,8 @@ $halNavigasi = $thePosts->generateNavigasi();
 
 
 $tmpTwitterCard = $thePosts->loadTwitterCard();
+
+$strDescriptionMeta = $thePosts->getDescription();
 
 unset($thePosts);
 //masukkan isipostingan ke Template
@@ -223,6 +225,7 @@ $WholeTemplate->Assign("[BlogTitle]", $headertitle);
 $WholeTemplate->Assign("[Halaman]", $halNavigasi);
 $WholeTemplate->Assign("[BaseFolder]", BASEFOLDER );
 $WholeTemplate->Assign("[RSSKoment]", $rsskoment );
+$WholeTemplate->Assign("DescriptionMeta", $strDescriptionMeta); 	
 
 if ($all = $WholeTemplate->Parse("_Whole_")) {
 	echo $all;

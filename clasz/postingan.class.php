@@ -44,7 +44,8 @@ class Postingan {
 	var $strPostFilterOR;
 	var $twitterCard;
 	var $tmpTwitterCard;
-	
+	var $strDescriptionMeta;	
+
 	function Postingan($intDebugl=0){
 		
 		$this->setDebug($intDebugl);
@@ -188,6 +189,11 @@ class Postingan {
 		$this->maxPostperPage = $maxpost;
 	}
 	
+
+	function getDescription() {
+		return $this->strDescriptionMeta;
+	}
+
 	function readPosts(){
 	/*	var $MaxPostperPage;
 		var $strSQL;
@@ -363,18 +369,23 @@ $fullURIPostingan = "http" . ((!empty($_SERVER['HTTPS'])) ? "s" : "") . "://".$_
 	if ($rowl["bolDraft"]==1) {
 		$this->template->Assign("Draft" , "draft");
 	}
-	
+
+
+	$this->strDescriptionMeta  = substr(strip_tags(sensor($isipostingan)),0,195) . "..";	
+
 	$tmpContent = $this->template->Parse("_postingan_");
 
 	$twitterCard = new TwitterCard();
 	$twitterCard->assignTemplate();
 
 	$twitterCard->setCard("TitleTC",$rowl['strJudul']);
-	$twitterCard->setCard("DescriptionTC",substr(strip_tags(sensor($isipostingan)),0,195) . "..");
+	$twitterCard->setCard("DescriptionTC",$this->strDescriptionMeta);
 	$twitterCard->setCard("ImageTC",$imginjurnal[2]);
 	$twitterCard->setCard("PermalinkTC",$fullURIPostingan);
 	
 	$this->tmpTwitterCard = $twitterCard->loadCard();
+
+
 
 	unset($isipostingan);
 
