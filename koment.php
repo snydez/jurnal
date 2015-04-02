@@ -44,6 +44,7 @@ $rowkoments = $DBkoments->retrieve();
 
 $jmlkoments = ($DBkoments->getTotalRow() / 2);
 
+
 unset($tmpKoment);
 unset($isi);
 $i=1;
@@ -70,6 +71,9 @@ while ($rowkoment = mysql_fetch_assoc($rowkoments)) {
 		default:
 			$z = '';
 	}
+
+	$canKoment = $rowkoment["bolhasKoment"];
+
 	
 	$strKoment = replacelinebreak($rowkoment["strKoment"]);
 
@@ -107,6 +111,15 @@ $theKoment->Assign("BaseFolder", BASEFOLDER);
 $theKoment->Assign("IDKategori", $_SESSION['kat']);
 $theKoment->Assign("Math1", rand(0,5));
 $theKoment->Assign("Math2", rand(0,5));
+
+if (!$canKoment) {
+	$strVisibility = "none";
+} else {
+	$strVisibility = "visible";
+}
+$theKoment->Assign("cankoment", $strVisibility);
+
+
 
 
 $untukditampilkan = $theKoment->Parse("rangkakoment");
