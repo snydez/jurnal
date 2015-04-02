@@ -69,7 +69,7 @@ if ($rowcheck = mysql_fetch_array($rowchecks) AND $allow ) {
 				echo $addkoment->getError($debug);
 		
 			} else {
-				kirimemail($strKoment, $strKomentator . " for " . $IDJurnal . " - " . $rowcheck["strJudul"] );
+				kirimemail($strKoment, $emailKomentator, $strKomentator,   "koment " . $IDJurnal . " - " . $rowcheck["strJudul"] );
 				header("Location: " . BASEFOLDER . "/komen/" . $IDJurnal);
 			}
 		} else {
