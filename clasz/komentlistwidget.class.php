@@ -83,9 +83,9 @@ class KomentListWidget extends Widget {
 		// provate function
 		
 		$koment= strip_tags($koment);
-		$nkata = split(" ",$koment);
+		$nkata = preg_split("/ /",$koment);
 		
-		for ($i=0;$i<$numberx;$i++) {
+		for ($i=0 ; $i<$numberx-1 ; $i++) {
 			$ngabung[$i] = $nkata[$i];
 		}
 
