@@ -34,20 +34,26 @@ class Database  {
 	}
 	
 	function retrieve() {
+
 		
+		$strxSQLFilter = "";
 		if (isset($this->strFilter)) {
 			$strxSQLFilter = " and " . $this->strFilter ."";
 		}
 				
+		$strxSQLOrder = "";
 		if (isset($this->sortascdesc)) {
 			$strxSQLOrder = " order by " . $this->sortascdesc;
 		}
 		
+
+		$strxSQLLimit = "";
 		if ($this->intLimit>0) {
 			if (!isset($this->intAwal)) $this->intAwal = 0;
 			$strxSQLLimit = " limit " . $this->intAwal . ", " . $this->intLimit;
 		}
 		
+		$strxGroup = "";
 		if (isset($this->strGroupBy)) {
 			$strxGroup = " GROUP BY " . $this->strGroupBy;
 		}
