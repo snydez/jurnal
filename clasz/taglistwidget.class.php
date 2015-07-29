@@ -55,7 +55,7 @@ class TagListWidget extends Widget {
 				$tmptags = "\n<div class=\"tagcloud\">";
 				$tmptags .= "\n<ul>\n";	
 				foreach ($tags as $key=> $isijml) {
-					$size = $minsize + (($isijml - minqty) * $step);
+					$size = $minsize + (($isijml - $minqty) * $step);
 					if ($size>=85) {			
 						$tmptags .= "<li><a href=\"" . BASEFOLDER ."/kat/" . $this->strKategori . "/tag/" . urlencode($key) . "\" style=\"font-size: " . $size . "%\" ref=\"tag\">";
 						$tmptags .= $key;

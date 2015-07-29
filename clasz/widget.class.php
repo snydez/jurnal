@@ -61,7 +61,10 @@ class Widget {
 		return $this->intWLimit;
 	}
 	
-	function assignTemplate($definition, $theTemplate) {
+// tadinya function assignTemplate($definition, $theTemplate)
+//tapi jadi ada notification error HP Strict Standards:  Declaration of XXX should be compatible with
+//jadinya dikasih default empty value 
+	function assignTemplate($definition='', $theTemplate='') {
 		
 		
 		$this->template = new SimpleTemplate();

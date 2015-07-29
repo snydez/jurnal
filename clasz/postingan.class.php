@@ -343,13 +343,16 @@ $fullURIPostingan = "http" . ((!empty($_SERVER['HTTPS'])) ? "s" : "") . "://".$_
 	
 	
 	
-	$this->template->Assign("TglPostingan", $postdate[mday]);
-	$this->template->Assign("BulanPostingan", substr($postdate[month],0,3));
-	$this->template->Assign("TahunPostingan", $postdate[year]);
-	$this->template->Assign("JamPostingan", $postdate[hours] . ":" . leadingzero($postdate[minutes]));
+	$this->template->Assign("TglPostingan", $postdate["mday"]);
+	$this->template->Assign("BulanPostingan", substr($postdate["month"],0,3));
+	$this->template->Assign("TahunPostingan", $postdate["year"]);
+	$this->template->Assign("JamPostingan", $postdate["hours"] . ":" . leadingzero($postdate["minutes"]));
 
-	$this->template->Assign("Draft", $row["bolDraft"]);
 	$this->template->Assign("JumlahKoment", $DBkoments->getTotalRow());
+// should this $row is actually $rowl??? 3Jul15
+// jadi ganti $row['bolDraft'] jadi $rowl['bolDraft']
+	$this->template->Assign("Draft", $rowl["bolDraft"]);
+//
 	$this->template->Assign("URIKoment", BASEFOLDER . "/komen/" . $rowl["IDJurnal"]);
 	
 	$this->template->Assign("URITrackback", BASEFOLDER . "/ping/" . $rowl["IDJurnal"]);

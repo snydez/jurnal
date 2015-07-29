@@ -12,9 +12,9 @@ session_start();
 
 
 
-$userlogin = 'servo_bel';
-$userpwd = 'trustn01';
-$dbname = 'servo_dbjurnalv2';
+$userlogin = 'snydez';
+$userpwd = 'snydez';
+$dbname = 'snydzcom_dbjurnalv2';
 
 define("CLASSFOLDER","clasz", true);
 define("TEMPLATEFOLDER","templatez", true);
