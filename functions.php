@@ -267,9 +267,9 @@ function onlychar($strX) {
 
 function hardhostlink($strString) {
 
-	$regexsearch = "a[ ]+href\=(\'|\")id";
+	$regexsearch = "#a[ ]+href\=(\'|\")id#";
 	// ini musti diganti jadi preg_replace, cuma belum tau syntaxnya sama ga  4Jul15
-	$textbody=ereg_replace($regexsearch ,"a href=\"http://". $_SERVER["HTTP_HOST"] . "/id",$strString);
+	$textbody=preg_replace($regexsearch ,"a href=\"http://". $_SERVER["HTTP_HOST"] . "/id",$strString);
 	
 	return $textbody;
 	
