@@ -12,14 +12,14 @@ session_start();
 
 
 
-$userlogin = 'snydez';
-$userpwd = 'snydez';
+$userlogin = 'snydzcom_bel';			// 'snydez';
+$userpwd = 'snydzcom_bel2';			// 'snydez';
 $dbname = 'snydzcom_dbjurnalv2';
 
 define("CLASSFOLDER","clasz", true);
 define("TEMPLATEFOLDER","templatez", true);
 define("TEMPLATEIMAGEFOLDER","templatez/tximg", true);
-define("BASEFOLDER","/jurnal", true);  // jika diinstal di bawah root domain , kosongkan isi basefolder
+define("BASEFOLDER","", true);  // jika diinstal di bawah root domain , kosongkan isi basefolder
 
 
 
