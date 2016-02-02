@@ -29,11 +29,11 @@ if ($poskres = strpos($IDpostingan, "#")) {
 
 
 $DBkoments = new Database;
-
-$strSQL = "select k.*, j.bolhasKoment, j.strJudul from tblKoment k, tblJurnal j ";
+// sql ini gak bisa dapat kalo tblKoment empty
+$strSQL = "select k.*, j.bolhasKoment, j.strJudul from tblKoment k right join tblJurnal j  on k.IDJurnal = j.IDJurnal";
 
 $DBkoments->setstrSQL($strSQL);
-$DBkoments->setFilter("k.IDJurnal = j.IDJurnal AND k.IDJurnal  = " . $IDpostingan ."");
+$DBkoments->setFilter("j.IDJurnal  = " . $IDpostingan ."");
 $DBkoments->setSort("IDKoment asc");
 
 
