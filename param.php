@@ -11,10 +11,9 @@ if (spam($strreferer)==1) {
 session_start();
 
 
-
-$userlogin = 'snydzcom_bel';			// 'snydez';
-$userpwd = 'snydzcom_bel2';			// 'snydez';
-$dbname = 'snydzcom_dbjurnalv2';
+$userlogin = 'snydez_jurnal';			// 'snydez';
+$userpwd = 'Jurn4l!snydez';			// 'snydez';
+$dbname = 'snydez_dbjurnalv2';
 
 define("CLASSFOLDER","clasz", true);
 define("TEMPLATEFOLDER","templatez", true);

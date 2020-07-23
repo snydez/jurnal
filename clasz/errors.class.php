@@ -2,6 +2,10 @@
 class Errorc {
 	var $strErrors;
 	
+
+	function __construct(){
+	}
+
 	function errors($xstrErrMsg) {
 		$this->strErrors[]=$xstrErrMsg;
     }

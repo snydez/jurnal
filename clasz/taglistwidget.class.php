@@ -5,7 +5,7 @@ class TagListWidget extends Widget {
 
 	
 
-	function TagListWidget($intDebugl) {
+	function __construct($intDebugl) {
 		$this->setDebug($intDebugl);
 		$this->assignTemplate();
 		
@@ -13,7 +13,7 @@ class TagListWidget extends Widget {
 	
 	function assignTemplate() {
 		$theTemplate = getOption("widgettemplate");
-		parent::assignTemplate("_widget_", $theTemplate);
+		parent::wassignTemplate("_widget_", $theTemplate);
 	
 	} // end function assigntemplate
 	
@@ -22,7 +22,8 @@ class TagListWidget extends Widget {
 		$DBt = new Database($this->intDebug);	
 
 		$strSQL = "select j.IDKategori, tj.IDTag as tagg, count(*) as jml from relTag_Jurnal tj , tblJurnal j ";
-		
+	
+		$DBt->setConn($conn);	
 		$DBt->setstrSQL($strSQL);
 		$DBt->setSort("jml desc");
 		$DBt->setGroup("j.IDKategori, tj.IDTag");
@@ -34,7 +35,7 @@ class TagListWidget extends Widget {
 		if ($rs = $DBt->retrieve()) {
 
 			if ($DBt->getTotalRow()>0) {
-				while ($row = mysql_fetch_assoc($rs)) {
+				while ($row = $rs-> fetch_assoc()) {
 					$tags[$row['tagg']] = $row['jml'];
 					
 				} //end while

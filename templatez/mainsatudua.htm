@@ -1,72 +1,51 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>{[BlogTitle]}</title>
-  
-  <link rel="alternate" type="application/rss+xml" href="{[BaseFolder]}/feed/rss20" title="Snydez the Days After RSS20 feed" />
-  <link rel="alternate" type="application/rss+xml" href="{[BaseFolder]}/feed/rss" title="Snydez the Days After RSS feed" />
-  <link rel="alternate" type="application/atom+xml" href="{[BaseFolder]}/feed/atom" title="Snydez the Days After Atom feed" />
-
-  {[RSSKoment]}
-  
-  
-	<META NAME="description" CONTENT="{DescriptionMeta}" />
-	<META NAME="keywords" CONTENT="snydez, gembel, gmbel, love, friends, journal, jurnal, blog, personal, diary" />
-	<META NAME="y_key" CONTENT="7404cb8ca935549f" />
-	<META NAME="microid" CONTENT="mailto+http:sha1:950978ad88b8fd605557bb319b323a372c43859f" />
-
-		{[TwitterCard]}
-	<link rel="author" href="http://snydez.com" />
-	<link rel="start" href="http://jurnal.snydez.com/" title="Home" />
-	<link rel="shortcut icon" type="image/ico" href="http://jurnal.snydez.com/favicon.ico" />
-	
-	<link rel="openid2.provider" href="https://openid.stackexchange.com/openid/provider">
-	<link rel="openid2.local_id" href="https://openid.stackexchange.com/user/3fd3be30-428f-4dd3-8b40-0069ddc5bed2">
-
-	<link rel="pingback" href="http://jurnal.snydez.com/pingback.php" />
-	<link rel="stylesheet" href="{[BaseFolder]}/templatez/satudua.css" type="text/css" />
-	<!-- google plus one //-->
-	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-
-	
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>{[BlogTitle]}</title>
+	<link href="{[BaseFolder]}/feed/rss20" rel="alternate" title="Snydez the Days After RSS20 feed" type="application/rss+xml" />
+	<link href="{[BaseFolder]}/feed/rss" rel="alternate" title="Snydez the Days After RSS feed" type="application/rss+xml" />
+	<link href="{[BaseFolder]}/feed/atom" rel="alternate" title="Snydez the Days After Atom feed" type="application/atom+xml" />
 </head>
 <body>
-
-<div itemscope itemtype="http://schema.org/Article" id="fullwrapper">
-<div id="kiri">
-	{[Kategori]}
-	{[Postingan]}
-	
-	<div id="paging">{[Halaman]}</div> <!-- end id paging //-->
-	
-</div> <!-- end id_kiri //-->
+<p>{[RSSKoment]} <META NAME="description" CONTENT="{DescriptionMeta}" /> <META NAME="keywords" CONTENT="snydez, gembel, gmbel, love, friends, journal, jurnal, blog, personal, diary" /> <META NAME="y_key" CONTENT="7404cb8ca935549f" /> <META NAME="microid" CONTENT="mailto+http:sha1:950978ad88b8fd605557bb319b323a372c43859f" /> {[TwitterCard]}</p>
+</body>
+<link href="http://snydez.com" rel="author" />
+<link href="http://jurnal.snydez.com/" rel="start" title="Home" />
+<link href="http://jurnal.snydez.com/favicon.ico" rel="shortcut icon" type="image/ico" />
+<link href="https://openid.stackexchange.com/openid/provider" rel="openid2.provider" />
+<link href="https://openid.stackexchange.com/user/3fd3be30-428f-4dd3-8b40-0069ddc5bed2" rel="openid2.local_id" />
+<link href="http://jurnal.snydez.com/pingback.php" rel="pingback" />
+<link href="{[BaseFolder]}/legacy/templatez/satudua.css" rel="stylesheet" type="text/css" /><!-- google plus one //--><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<div id="fullwrapper" itemscope="" itemtype="http://schema.org/Article">
+<div id="kiri">{[Kategori]} {[Postingan]}
+<div id="paging">{[Halaman]}</div>
+<!-- end id paging //--></div>
+<!-- end id_kiri //-->
 
 <div id="kanan">
-	<div itemprop="name" class="header" >
-		<a href="{[BaseFolder]}/">the Days After</a>
-	</div>
-	{[WidgetKomentarList]}
-	{[WidgetPostList]}
-	
-	{[WidgetSearchBox]}
-	{[WidgetLinkList]}
-	{[WidgetAboutMe]}	
-	
-
-	</div>
-</div> <!-- end id_kanan //-->
-
-<div id="bawah">
-	
-	{[WidgetTagList]}
-</div><!-- end id bawah //-->
-</div> <!-- end full wrapper // -->
-
-
-<!-- end google analytics // -->
-
+<div class="header" itemprop="name"><a href="{[BaseFolder]}/">the Days After legacy</a></div>
+<div>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- legacyjurnal2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2405329547214743"
+     data-ad-slot="5519392868"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
 <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+{[WidgetKomentarList]} {[WidgetPostList]} {[WidgetSearchBox]} {[WidgetLinkList]} {[WidgetAboutMe]}</div>
+</div>
+<!-- end id_kanan //-->
+
+<div id="bawah">{[WidgetTagList]}</div>
+<!-- end id bawah //--><!-- end full wrapper // --><!-- end google analytics // --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -76,7 +55,6 @@
   ga('send', 'pageview');
 
 </script>
-
 
 <div id="fb-root"></div>
 <script>
@@ -90,7 +68,4 @@
       '//connect.facebook.net/en_US/all.js';
     document.getElementById('fb-root').appendChild(e);
   }());
-</script>
-
-</body>
-</html>
+</script></html>

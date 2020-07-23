@@ -3,7 +3,7 @@ include_once("widget.class.php");
 
 class AdsenseWidget extends Widget {
 
-	function AdsenseWidget($intDebugl=1) {
+	function __construct($intDebugl=1) {
 		$this->setDebug($intDebugl);
 		$this->assignTemplate();
 	}
@@ -37,7 +37,7 @@ src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\">
 
 	function assignTemplate() {
 		$theTemplate = getOption("widgettemplate");
-		parent::assignTemplate("_widget_", $theTemplate);
+		parent::wassignTemplate("_widget_", $theTemplate);
 	
 
 	} // end function assigntemplate

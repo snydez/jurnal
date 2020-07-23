@@ -196,13 +196,14 @@ function getOption($whatOption) {
 	$DBopt = new Database();
 	$strSQL = "select * from tblOption";
 
+    $DBopt->setConn($conn);
 	$DBopt->setstrSQL($strSQL);
 	$DBopt->setFilter("strOption = '" . $whatOption . "'");
 
 
 	if ($hasilOpt = $DBopt->retrieve()) {
 		unset($DBopt); 
-		$rowOpt = mysql_fetch_assoc($hasilOpt);
+		$rowOpt = mysqli_fetch_assoc($hasilOpt);
 		$thevalue = $rowOpt['strValue'];
 	} else {
 		$thevalue = $DBopt->getError();
@@ -251,11 +252,11 @@ function JudulURI($row) {
 function onlychar($strX) {
 	
 	// ambil hanya karakter aja
-	$regexsearch = "[^| |A-Za-z0-9-]";
+	$regexsearch = "#[^| |A-Za-z0-9-]#";
 	$regexreplace = ""; 
 	
 	$strX = strip_tags($strX);
-	$strX = ereg_replace($regexsearch , $regexreplace , stripslashes($strX));
+	$strX = preg_replace($regexsearch , $regexreplace , stripslashes($strX));
 	$strX = str_replace(' ','-', $strX);
 	$strX = urlencode($strX);
 	

@@ -12,7 +12,7 @@ class TwitterCard {
 	var $template;
 	
 
-	function TwitterCard($intDebugl){
+	function __construct($intDebugl){
 
  	    
 	}

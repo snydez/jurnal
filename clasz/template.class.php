@@ -12,7 +12,7 @@ include_once("errors.class.php");
 define("ltag", "{");
 define("rtag", "}");
 
-class SimpleTemplate {
+class cSimpleTemplate {
     var $Tag = array();
     var $Templates = array();
     var $Contents;

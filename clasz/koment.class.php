@@ -21,7 +21,7 @@ class Koment {
 	var $intType;
 	var $maxKomentperPage;
 	
-	function Koment($intDebugl=0) {
+	function __construct($intDebugl=0) {
 		$this->setDebug($intDebugl);
 		$this->errP = new Errorc; 
 	}
@@ -106,13 +106,14 @@ class Koment {
 		if (!$this->maxKomentperPage)  		$this->maxKomentperPage = getOption("MaxKomentperPage");
 		
 		$DB = new Database($this->intDebug);
+		
 		$strSQL = "select k.*, j.strJudul from tblKoment k inner join tblJurnal j on j.IDJurnal = k.IDJurnal ";
 	
 		if ($this->intType<>'') {
 			$this->addFilter("k.intType = " . $this->intType . "");
 		}		
 		
-		
+		$DB->setConn($conn);
 		$DB->setstrSQL($strSQL);
 		//batasi hanya sejumlah 'MaxposPerPage' yang tampil disatu halaman
 		$DB->setLimit(0, $this->maxKomentperPage);
@@ -312,6 +313,7 @@ $this->template->Assign("[IDKategori]", $_SESSION['kat']);
 		
 		$DBKoment = new Database($this->intDebug);
 		
+		$DBKoment->setConn($conn);
 		$DBKoment->setstrSQL("Select * from tblKoment");
 		$DBKoment->setFilter("IDKoment = " . $this->IDKoment . "");
 		

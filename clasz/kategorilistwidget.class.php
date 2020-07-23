@@ -5,7 +5,7 @@ class KategoriListWidget extends Widget {
 	
 
 	
-	function KategoriListWidget($intDebugl=0) {
+	function __construct($intDebugl=0) {
 		$this->setDebug($intDebugl);
 		$this->assignTemplate();
 	}
@@ -18,6 +18,7 @@ class KategoriListWidget extends Widget {
 		$DBw = new Database($this->intDebug);
 		
 		$strSQL = "select * from tblKategori ";
+		$DBw->setConn($conn);
 		$DBw->setstrSQL($strSQL);
 		$DBw->setLimit(0, $this->getLimit()); //ambil limit yang udah diset. atau yang default
 		
@@ -28,7 +29,7 @@ class KategoriListWidget extends Widget {
 						
 			// read all links
 			$links .= "<ul>\n";
-			while ($row=mysql_fetch_assoc($rs)) {
+			while ($row= $rs -> fetch_assoc()) {
 				$links .= "<li>";
 				$links .= "<a href=\"" . BASEFOLDER . "/kat/" .  $row['IDKategori'] . "\"  name=\"". $row['IDKategori'] ."\">";
 				$links .= $row['strKategori'];
@@ -61,7 +62,7 @@ class KategoriListWidget extends Widget {
 	
 	function assignTemplate() {
 		$theTemplate = getOption("topwidget");
-		parent::assignTemplate("_widget_", $theTemplate);
+		parent::wassignTemplate("_widget_", $theTemplate);
 	
 
 	} // end function assigntemplate

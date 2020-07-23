@@ -3,7 +3,7 @@ include_once("widget.class.php");
 
 class AboutMeWidget extends Widget {
 
-	function AboutMeWidget($intDebugl=0) {
+	function __construct($intDebugl=0) {
 		$this->setDebug($intDebugl);
 
 		$strJudul  = "<a  href=\"http://about.me/snydez\" target=\"_blank\">about.me</a>";
@@ -44,7 +44,7 @@ class AboutMeWidget extends Widget {
 
 	function assignTemplate() {
 		$theTemplate = getOption("widgettemplate");
-		parent::assignTemplate("_widget_", $theTemplate);
+		parent::wassignTemplate("_widget_", $theTemplate);
 	
 
 	} // end function assigntemplate

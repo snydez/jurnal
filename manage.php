@@ -8,7 +8,7 @@ include_once( CLASSFOLDER . "/koment.class.php");
 $loginmode = $_SESSION["sesadmin"];
 
 
-if (!$loginmode) { header ("Location: ./"); }
+if (!$loginmode) { header ("Location: ./legacy/"); }
 
 $theManage = new SimpleTemplate;
 
@@ -25,7 +25,7 @@ $menu = $_GET["menu"];
 $parampage = $_GET["hal"];
 $paramIDKoment = $_GET["IDk"];
 
-	$theManage->Assign("BaseFolder", BASEFOLDER );
+	$theManage->Assign("BaseFolder", BASEFOLDER ."" );
 
 /* handling menu
 * 1. list postingan

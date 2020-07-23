@@ -29,8 +29,8 @@ if ($poskres = strpos($IDpostingan, "#")) {
 
 
 $DBkoments = new Database;
-// sql ini gak bisa dapat kalo tblKoment empty
-$strSQL = "select k.*, j.bolhasKoment, j.strJudul from tblKoment k right join tblJurnal j  on k.IDJurnal = j.IDJurnal";
+
+$strSQL = "select k.*, j.bolhasKoment, j.strJudul from  tblJurnal j left join tblKoment k on k.IDJurnal = j.IDJurnal";
 
 $DBkoments->setstrSQL($strSQL);
 $DBkoments->setFilter("j.IDJurnal  = " . $IDpostingan ."");
@@ -48,7 +48,7 @@ $jmlkoments = ($DBkoments->getTotalRow() / 2);
 unset($tmpKoment);
 unset($isi);
 $i=1;
-while ($rowkoment = mysql_fetch_assoc($rowkoments)) {
+while ($rowkoment = mysqli_fetch_assoc($rowkoments)) {
 
 	$theKoment->Assign("IDKoment", $rowkoment["IDKoment"]);
 	$strNamadanURI = $rowkoment["strKomentator"];
@@ -73,6 +73,7 @@ while ($rowkoment = mysql_fetch_assoc($rowkoments)) {
 	}
 
 	$canKoment = $rowkoment["bolhasKoment"];
+
 
 	
 	$strKoment = replacelinebreak($rowkoment["strKoment"]);
@@ -111,6 +112,8 @@ $theKoment->Assign("BaseFolder", BASEFOLDER);
 $theKoment->Assign("IDKategori", $_SESSION['kat']);
 $theKoment->Assign("Math1", rand(0,5));
 $theKoment->Assign("Math2", rand(0,5));
+
+$theKoment->Assign("tes", '..' . $canKoment. ' ... ' . $rowkoment["bolhasKoment"]);
 
 if (!$canKoment) {
 	$strVisibility = "none";

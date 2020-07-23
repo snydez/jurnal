@@ -4,7 +4,8 @@
    last modification : 3:30 PM Tuesday, August 07, 2007
 */
 
-include_once("dbconnx.php");
+// include_once("dbconnx.php");
+include_once("param.php");
 include_once("errors.class.php");
 
 class Database  {
@@ -19,11 +20,40 @@ class Database  {
 	var $errc;
 	var $intDebug;
 	
-
-	function Database($intDebugl=0) {
+	var $lconn;
+	var $connz;
+	
+    
+	function __construct($intDebugl=0) {
+	    
+	    
+	    
 		$this->errc = new Errorc;
 		$this->setDebug($intDebugl);
+		
+		global $userlogin;
+		global $userpwd;
+		global $dbname;
+
+		$x = new mysqli("localhost", $userlogin,$userpwd,$dbname);
+		
+		if ($x -> connect_errno) {
+		    $this->errc->errors("" . $x -> connect_errno . "x". $dbname . " --  -- connect -- database");
+		    return false;
+			
+		} else {
+		    
+		    $this->connz = $x;
+		}
+		
 	}
+	
+	function setConn($connx) {
+	    $this->lconn = $conny;
+	}
+	
+
+	
 	
 	function setstrSQL($strxSQL) {
 		$this->strSQL = $strxSQL;
@@ -64,7 +94,7 @@ class Database  {
 			
 			$this->strSQL = $this->strSQL . " where 1=1  " . $strxSQLFilter . $strxGroup . $strxSQLOrder . $strxSQLLimit .";" ;
 
-			$xhasil = mysql_query($this->strSQL);
+			$xhasil = mysqli_query($this->connz, $this->strSQL);
 			if ($xhasil) {
 				return $xhasil;
 			} else {
@@ -83,7 +113,7 @@ class Database  {
 		if (isset($this->strSQL)) {
 			// check apakah sql string nya = "update"
 			if (substr($this->strSQL,0,6)=="update") {
-				$xhasil = mysql_query($this->strSQL) ;
+				$xhasil = mysqli_query($this->connz, $this->strSQL) ;
 				if ($xhasil) {
 					return true;
 				}	else  {
@@ -107,7 +137,7 @@ class Database  {
 		if (isset($this->strSQL)) {
 			// check apakah SQL string nya bener "insert bla bla" apa engga.
 			if (substr($this->strSQL,0,6)=="insert") {
-				$xhasil = mysql_query($this->strSQL);
+				$xhasil = mysqli_query($this->connz,$this->strSQL);
 				if ($xhasil) {
 					return true;
 				} else {
@@ -131,7 +161,7 @@ class Database  {
 			// check apakah SQL string nya bener "delete bla bla" apa engga.
 		
 			if (substr($this->strSQL,0,6)=="delete") {
-				$xhasil = mysql_query($this->strSQL);
+				$xhasil = mysqli_query($this->connz, $this->strSQL);
 				if ($xhasil) {
 					return true;
 				} else {
@@ -159,9 +189,9 @@ class Database  {
 	
 	if ($this->intDebug) echo "<p class=\"error\">$strxSQL</p>";
 	
-		$xhasil = mysql_query($strxSQL);
+		$xhasil = mysqli_query($this->connz, $strxSQL);
 		
-		if ($intRows = mysql_num_rows($xhasil)) {
+		if ($intRows = mysqli_num_rows($xhasil)) {
 		  $this->intTotalRow = $intRows;
 		} else {
 		  $this->intTotalRow = 0;

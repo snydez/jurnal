@@ -7,7 +7,8 @@ class SearchBoxWidget extends Widget {
 	var $paramSearch;
 	var $urlTargetAction;
 	
-	function SearchBoxWidget($intDebugl = 0) {
+	function __construct($intDebugl = 0) {
+		parent::__construct();
 		$this->setDebug($intDebugl);
 		$this->assignTemplate();
 		
@@ -56,9 +57,10 @@ class SearchBoxWidget extends Widget {
 		$this->urlTargetAction = $targetl;
 	}
 	
-	function assignTemplate() {
+	private function assignTemplate() {
+		
 		$theTemplate = getOption("widgettemplate");
-		parent::assignTemplate("_widget_", $theTemplate);
+		parent::wassignTemplate("_widget_", $theTemplate);
 	
 
 	} // end function assigntemplate

@@ -5,7 +5,8 @@ class LinkListWidget extends Widget {
 	
 
 	
-	function LinkListWidget($intDebugl=0) {
+	function __construct($intDebugl=0) {
+		parent::__construct();
 		$this->setDebug($intDebugl);
 		$this->assignTemplate();
 	}
@@ -21,6 +22,8 @@ class LinkListWidget extends Widget {
 		$DBw = new Database($this->intDebug);
 		
 		$strSQL = "select * from tblLinks ";
+		
+		$DBw->setConn($conn);
 		$DBw->setstrSQL($strSQL);
 		$DBw->setFilter("intType = " . $this->intLinkType . "");
 		$DBw->setLimit(0, $this->getLimit()); //ambil limit yang udah diset. atau yang default
@@ -35,7 +38,7 @@ class LinkListWidget extends Widget {
 						
 			// read all links
 			$links .= "<ul>\n";
-			while ($row=mysql_fetch_assoc($rs)) {
+			while ($row= $rs -> fetch_assoc()) {
 				$links .= "<li>";
 				$links .= "<a href=\"" . $row['URI'] . "\" target=\"_blank\" name=\"". $row['strDescr'] ."\">";
 				$links .= $row['strBloggerName'];
@@ -66,9 +69,9 @@ class LinkListWidget extends Widget {
 
 	}
 	
-	function assignTemplate() {
+	private function assignTemplate() {
 		$theTemplate = getOption("widgettemplate");
-		parent::assignTemplate("_widget_", $theTemplate);
+		parent::wassignTemplate("_widget_", $theTemplate);
 	
 
 	} // end function assigntemplate

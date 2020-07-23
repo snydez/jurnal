@@ -2,6 +2,7 @@
 include_once("database.class.php");
 include_once("template.class.php");
 include_once("errors.class.php");
+
 class Widget {
 	var $intDebug;
 	var $errW;
@@ -11,7 +12,7 @@ class Widget {
 	var $intLinkType;
 	var $strKategori;
 	
-	function Widget($intDebugl = 0) {
+	function __construct($intDebugl = 0) {
 		$this->intDebug = $intDebugl;
 		$this->errW = new Errorc;
 	}
@@ -64,7 +65,7 @@ class Widget {
 // tadinya function assignTemplate($definition, $theTemplate)
 //tapi jadi ada notification error HP Strict Standards:  Declaration of XXX should be compatible with
 //jadinya dikasih default empty value 
-	function assignTemplate($definition='', $theTemplate='') {
+	 function wassignTemplate($definition='', $theTemplate='') {
 		
 		
 		$this->template = new SimpleTemplate();

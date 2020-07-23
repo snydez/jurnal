@@ -11,6 +11,7 @@ class PostingListManage extends PostListWidget {
 	
 		$postingan = new Database($this->intDebug);
 		
+		$postingan->setConn($conn);
 		$postingan->setstrSQL($strSQL);
 		$postingan->setLimit(0,5);
 		$postingan->setSort("IDJurnal desc");
@@ -51,7 +52,7 @@ class PostingListManage extends PostListWidget {
 						---- betuliinnnnn
 			// read all links
 			$posts .= "\n<ul>\n";
-			while ($row=mysql_fetch_assoc($rs)) {
+			while ($row= $rs -> fetch_assoc()) {
 				$posts .= "<li>";
 				$posts .= "<a href=\"" . BASEFOLDER . "/id/" . $row['IDJurnal'] . "\">";  
 				$posts .= strip_tags($row['strJudul']);

@@ -46,7 +46,7 @@ class Postingan {
 	var $tmpTwitterCard;
 	var $strDescriptionMeta;	
 
-	function Postingan($intDebugl=0){
+	function __construct($intDebugl=0){
 		
 		$this->setDebug($intDebugl);
 		$this->managemode = "normal";
@@ -70,7 +70,8 @@ class Postingan {
 		$this->template = new SimpleTemplate;
 		
 		if (!$this->template->Define("_postingan_", "" . TEMPLATEFOLDER . "/". $this->strTemplateName . "")) {
-			$this->template->setError("Cannot set template" . $this->strTemplateName);
+		// snydez remark 20200115
+		//	$this->template->setError("Cannot set template" . $this->strTemplateName);
 			return false;
 			
 		} //end if
@@ -219,7 +220,7 @@ class Postingan {
 			$strSQL .= ", tblKategori k ";
 			$this->addFilter("k.IDKategori = j.IDKategori");
 		//}
-	
+        $DB->setConn($conn);	
 		$DB->setstrSQL($strSQL);
 		
 		
@@ -263,7 +264,7 @@ class Postingan {
 			unset($isi);
 			
 			$this->rownumber = 1; // set firstrownum = 1
-			while ($row = mysql_fetch_assoc($rs)){
+			while ($row = $rs -> fetch_assoc()){
 				
 				$isi .= $this->generateSinglePost($row);
 				$this->rownumber++;  // increment rownumber
@@ -313,6 +314,7 @@ function generateSinglePost($rowl) {
 	
 	$DBkoments = new Database($this->intDebug);
 	
+	$DBkoments->setConn($conn);
 	$DBkoments->setstrSQL($strSQLKoment);
 	$DBkoments->setFilter("IDJurnal = " . $rowl["IDJurnal"] . ""); //retrieve koment based on IDJurnal
 	
@@ -402,11 +404,12 @@ function displayAuthor($userID) {
 	if (getOption("displayauthor")==1 AND isset($userID)) {
 		
 		$dbUser = new Database($this->intDebug);
+		$dbUser->setConn($conn);
 		$dbUser->setstrSQL("select * from tblUser");
 		$dbUser->setFilter("userID = '" . $userID . "'");
 		
 		if ($rs = $dbUser->retrieve()) {
-			$row = mysql_fetch_assoc($rs);
+			$row = fecth_assoc($rs);
 			return "<div class=\"author\">post by <strong>" . $row["strFirstName"] . " " . $row["strLastName"] . "</strong></div>";
 			
 		} else {
@@ -438,6 +441,7 @@ $visitorl = $_COOKIE["visitor"];
 			*/
 			
 			$DBlast = new Database($this->intDebug);
+			$DBlast->setConn($conn);
 			$DBlast->setstrSQL("select j.IDJurnal ,  k.emailKomentator from tblJurnal j left join tblKoment k on j.IDJurnal = k.IDJurnal");
 			$DBlast->setFilter("j.IDJurnal = (select max(IDJurnal) from tblJurnal) and k.emailKomentator='" . $visitorl['strE_Mail'] . "'");
 
@@ -450,6 +454,7 @@ $visitorl = $_COOKIE["visitor"];
 					$DBrandom = new Database($this->intDebug);
 		
 					$strSQL = "select j.* from tblJurnal j left join tblKoment k on j.IDJurnal = k.IDJurnal" ;
+					$DBrandom->setConn($conn);
 					$DBrandom->setstrSQL($strSQL);
 					$strFilter = "j.strJudul <> '' and k.emailKomentator<>'"  . $visitorl['strE_Mail'] . "'";
 					$DBrandom->setFilter($strFilter);
@@ -457,7 +462,7 @@ $visitorl = $_COOKIE["visitor"];
 					$DBrandom->setLimit(0,1);
 					
 					if ($hasil= $DBrandom->retrieve()) {
-						$row = mysql_fetch_assoc($hasil);
+						$row = fecth_assoc($hasil);
 						$tmpContent = $this->generateSinglePost($row);
 					} //if success reading table jurnal with random
 
@@ -577,12 +582,14 @@ function generateTags($IDp) {
 
 	$DBTags = new Database($this->intDebug);
 	$strSQL = "select * from relTag_Jurnal";
+	
+	$DBTags->setConn($conn);
 	$DBTags->setstrSQL($strSQL);
 	$DBTags->setFilter("IDJurnal = " . $IDp . "");
 	
 	if ($rs = $DBTags->retrieve()) {
 		
-		while ($row = mysql_fetch_assoc($rs)) {
+		while ($row = $rs -> fetch_assoc()) {
 			$tmpTags[] = "<a href=\"" . BASEFOLDER . "/kat/" . $this->strKategori  .  "/tag/" .urlencode($row["IDTag"]) . "\" ref=\"tag\" class=\"tagsonpost\"  />" . $row["IDTag"] . "</a>";
 		}
 		if (count($tmpTags) > 0) {
@@ -635,6 +642,7 @@ class PostinganperCategory extends Postingan {
 		$this->assignTemplate();
 		$DBKat = new Database($this->intDebug);
 		
+		$DBKat->setConn($conn);
 		$DBKat->setstrSQL("select * from  tblKategori ");
 		if (!$rsKat = $DBKat->retrieve()) {
 			$DBKat->errc->errors("cannot browse Kategori");
@@ -646,7 +654,8 @@ class PostinganperCategory extends Postingan {
 		
 		unset($isi);
 		$this->rownumber = 1; // set firstrownum = 1
-		while ($rowKat = mysql_fetch_assoc($rsKat)) {
+		$DBJurnal->setsConn($conn);
+		while ($rowKat = $rsKat -> fetch_assoc()) {
 			
 			$DBJurnal->setstrSQL("select * from tblJurnal");
 			$DBJurnal->setFilter("IDKategori = '" . $rowKat["IDKategori"] . "'");
@@ -661,7 +670,7 @@ class PostinganperCategory extends Postingan {
 
 			
 			
-			while ($rowJ = mysql_fetch_assoc($rsJ)) {
+			while ($rowJ = $rsJ -> fetch_assoc()) {
 				$isi .= $this->generateSinglePost($rowJ);
 				$this->rownumber++; // incerement the rownumber
 			

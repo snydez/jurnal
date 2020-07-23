@@ -6,7 +6,8 @@ class PostListWidget extends Widget {
 	var $strSQL;
 	var $IDparaml;
 	
-	function PostListWidget($intDebugl=0) {
+	function __construct($intDebugl=0) {
+		parent::__construct();
 		$this->setDebug($intDebugl);
 		$this->setQuery();
 		$this->assignTemplate();
@@ -23,7 +24,7 @@ class PostListWidget extends Widget {
 						
 			// read all links
 			$posts .= "\n<ul>\n";
-			while ($row=mysql_fetch_assoc($rs)) {
+			while ($row= $rs -> fetch_assoc()) {
 				$posts .= "<li>";
 				$posts .= "<a href=\"" . BASEFOLDER . "/id/" . $row['IDJurnal'] . "/" . JudulURI($row) . "\">";  
 				$posts .= strip_tags($row['strJudul']);
@@ -43,6 +44,7 @@ class PostListWidget extends Widget {
 				
 		$DBw = new Database($this->intDebug);
 		
+		$DBw->setConn($conn);
 		$DBw->setstrSQL($this->strSQL);
 		// if specifiedID exist, grab $this->getLimit() ID posting 
 		
@@ -61,7 +63,8 @@ class PostListWidget extends Widget {
 			$this->parsingtemplate($rs);
 	
 		} else {
-			$this->errW->errors("cannot retrieve wigdet -- postlist");
+// snydez remark 20200115		
+//			$this->errW->errors("cannot retrieve wigdet -- postlist");
 			if ($this->intDebug) $tmpContent = $DBw->getError();
 		} //end if
 		
@@ -93,9 +96,9 @@ class PostListWidget extends Widget {
 		//if ($this->intDebug) $this->errP->errors("ID: " . $IDspecific);
 	}
 	
-	function assignTemplate() {
+	private function assignTemplate() {
 		$theTemplate = getOption("widgettemplate");
-		parent::assignTemplate("_widget_", $theTemplate);
+		parent::wassignTemplate("_widget_", $theTemplate);
 	
 
 	} // end function assigntemplate

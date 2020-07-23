@@ -5,7 +5,8 @@ class KomentListWidget extends Widget {
 	var $template;
 	var $intLinkType;
 
-	function KomentListWidget($intDebugl=0) {
+	function __construct($intDebugl=0) {
+		parent::__construct();
 		$this->setDebug($intDebugl);
 		$this->assignTemplate();
 	}
@@ -19,6 +20,7 @@ class KomentListWidget extends Widget {
 		$this->setLimit(7);
 		$strSQL = "select k.* from tblKoment k, tblJurnal j";
 		
+		$DBkw->setConn($conn);
 		$DBkw->setstrSQL($strSQL);
 		$DBkw->setFilter("k.intType = " . $this->intLinkType . " AND  j.IDJurnal = k.IDJurnal  AND j.IDKategori =  '" . $this->strKategori . "'");
 		$DBkw->setLimit(0,$this->getLimit());
@@ -34,7 +36,7 @@ class KomentListWidget extends Widget {
 			
 			//read koments
 			$koments .= "\n<ul>\n";
-			while ($row = mysql_fetch_assoc($rs)){
+			while ($row = $rs -> fetch_assoc()){
 				$koments .= "<li>";
 				$koments .= "<a href=\"".BASEFOLDER . "/komen/" . $row['IDJurnal'] . "#" . $row['IDKoment']  . "\" >";
 				$koments .= $row['strKomentator'] . "</a>:&nbsp&nbsp;";
@@ -71,9 +73,9 @@ class KomentListWidget extends Widget {
 	
 		
 	
-	function assignTemplate() {
+	private function assignTemplate() {
 		$theTemplate = getOption("widgettemplate");
-		parent::assignTemplate("_widget_", $theTemplate);
+		parent::wassignTemplate("_widget_", $theTemplate);
 	
 
 	} // end function assigntemplate
