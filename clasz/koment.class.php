@@ -39,7 +39,7 @@ class Koment {
 		// kalo belom set templatename nya, ambil dari default option database;
 		if (!$this->strTemplateName) $this->strTemplateName = getOption("komenttemplate");
 				
-		$this->template = new SimpleTemplate($this->intDebug);
+		$this->template = new cSimpleTemplate($this->intDebug);
 		
 		if (!$this->template->Define("_koment_", "" . TEMPLATEFOLDER . "/". $this->strTemplateName . "")) {
 			$this->template->setError("Cannot set template" . $this->strTemplateName);
