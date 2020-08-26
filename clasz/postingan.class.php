@@ -67,7 +67,7 @@ class Postingan {
 		// kalo belom set templatename nya, ambil dari default option database;
 		if (!$this->strTemplateName) $this->strTemplateName = getOption("postingantemplate");
 				
-		$this->template = new SimpleTemplate;
+		$this->template = new cSimpleTemplate;
 		
 		if (!$this->template->Define("_postingan_", "" . TEMPLATEFOLDER . "/". $this->strTemplateName . "")) {
 		// snydez remark 20200115
