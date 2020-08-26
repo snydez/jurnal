@@ -11,7 +11,7 @@ if ($_SESSION["sessionID"]!=session_id()) {
 
 $visitor = $_COOKIE["visitor"];
 
-$theKoment = new SimpleTemplate;
+$theKoment = new cSimpleTemplate;
 
 $komenttemplate = getOption("komenttemplate");
 $komentdetailtemplate = getOption("komentdetailtemplate");
@@ -89,7 +89,7 @@ while ($rowkoment = mysqli_fetch_assoc($rowkoments)) {
 
 	/* $theKoment->Assign("URI", $rowkoment["URIkomentator"]); */
 	
-	$tmpKoment = $theKoment->Parse(komentdetail);
+	$tmpKoment = $theKoment->Parse("komentdetail");
 	$isi = $isi . $tmpKoment;
 	
 	$i++;
