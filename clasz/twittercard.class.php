@@ -12,7 +12,7 @@ class TwitterCard {
 	var $template;
 	
 
-	function __construct($intDebugl){
+	function __construct($intDebugl=0){
 
  	    
 	}
@@ -28,7 +28,7 @@ class TwitterCard {
 		// kalo belom set templatename nya, ambil dari default option database;
 		if (!$this->strTemplateName) $this->strTemplateName = "twittercard.html";
 				
-		$this->template = new SimpleTemplate;
+		$this->template = new cSimpleTemplate;
 		
 		if (!$this->template->Define("_twittercard_", "" . TEMPLATEFOLDER . "/". $this->strTemplateName . "")) {
 			$this->template->setError("Cannot set template" . $this->strTemplateName);
