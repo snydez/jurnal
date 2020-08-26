@@ -86,7 +86,7 @@ if ($mobiletemplate) {
 
 
 
-$WholeTemplate = new SimpleTemplate(0) ;
+$WholeTemplate = new cSimpleTemplate(0) ;
 $WholeTemplate->Define("_Whole_", "" . TEMPLATEFOLDER . "/" . $theTemplate ."");
 
 // Origingally --- $thePosts = new Postingan($intDebug);
