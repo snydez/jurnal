@@ -49,7 +49,14 @@ class cSimpleTemplate {
 		reset($this->Templates);
 		if (file_exists($this->Templates[$handle])) {
 			$template=implode("", file($this->Templates[$handle]));
-			while (list($tag, $value)=each($this->Tag)) {
+			// snydez update depcrated each
+			foreach($this->Tag as $tag => $value) {
+			    
+			    //$tag = key($zzz);
+			    // $value = current($zzz);
+			 
+			
+			// while (list($tag, $value)=each($this->Tag)) {
 				$tag=ltag.$tag.rtag;
 				$template=str_replace($tag, $value, $template);
 			}
