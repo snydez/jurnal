@@ -68,7 +68,7 @@ class Widget {
 	 function wassignTemplate($definition='', $theTemplate='') {
 		
 		
-		$this->template = new SimpleTemplate();
+		$this->template = new cSimpleTemplate();
 		if (!$this->template->Define($definition, "" . TEMPLATEFOLDER . "/". $theTemplate . "")) {
 			if ($this->intDebug) echo $this->template->getError();
 		} //end if
